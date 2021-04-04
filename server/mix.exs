@@ -1,9 +1,9 @@
-defmodule PhotoBlog.MixProject do
+defmodule CompanyTest.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :photo_blog,
+      app: :events_app,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule PhotoBlog.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {PhotoBlog.Application, []},
+      mod: {CompanyTest.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -46,7 +46,7 @@ defmodule PhotoBlog.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:cors_plug, "~> 2.0"},
-      {:argon2_elixir, "~> 2.4"},
+      {:argon2_elixir, "~> 2.0"}
     ]
   end
 

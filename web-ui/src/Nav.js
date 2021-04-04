@@ -1,101 +1,123 @@
-import { Nav, Row, Col, Form,
-         Button, Alert } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 
 import { api_login } from './api';
+import store from './store';
 
 function LoginForm() {
-  const [name, setName] = useState("");
-  const [pass, setPass] = useState("");
+    const location = useLocation();
+    let history = useHistory();
+    const [email, setEmail] = useState("");
+    const [pass, setPass] = useState("");
 
-  function on_submit(ev) {
-    ev.preventDefault();
-    api_login(name, pass);
-  }
+    function submit(ev) {
+        ev.preventDefault();
+        api_login(email, pass);
+        // so user signup disappears after signing up for an account, and any time someone revisits signup screen on login
+        if (location.pathname.includes("signup")) {
+            history.push("/");
+        }
+    }
 
-  return (
-    <Form onSubmit={on_submit} inline>
-      <Form.Control name="name"
-                    type="text"
-                    onChange={(ev) => setName(ev.target.value)}
-                    value={name} />
-      <Form.Control name="password"
-                    type="password"
-                    onChange={(ev) => setPass(ev.target.value)}
-                    value={pass} />
-      <Button variant="primary" type="submit">
-        Login
-      </Button>
-    </Form>
-  );
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <Form onSubmit={submit} inline>
+                        Email:
+			<Form.Control name="email"
+                            type="text"
+                            onChange={(ev) => setEmail(ev.target.value)}
+                            value={email} />
+			Password:
+			<Form.Control name="password"
+                            type="password"
+                            onChange={(ev) => setPass(ev.target.value)}
+                            value={pass} />
+                        <Button variant="secondary" type="submit">Login</Button>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
-let SessionInfo = connect()(({session, dispatch}) => {
-  function logout() {
-    dispatch({type: 'session/clear'});
-  }
-  return (
-    <p>
-      Logged in as {session.name} &nbsp;
-      <Button onClick={logout}>Logout</Button>
-    </p>
-  );
-});
+function SessionInfo({ session }) {
 
-function LOI({session}) {
-  if (session) {
-    return <SessionInfo session={session} />;
-  }
-  else {
-    return <LoginForm />;
-  }
+    function logout(ev) {
+        ev.preventDefault();
+        store.dispatch({ type: 'session/clear' });
+    }
+
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    Username:
+                    <Link to="/user/view">{session.name}</Link> |
+                    Email:
+                    {session.email} |
+                    <Button onClick={logout}> Logout</Button>
+                </Col>
+            </Row>
+        </Container>
+    );
+}
+
+function LOI({ session }) {
+    if (session) {
+        return <SessionInfo session={session} />;
+    } else {
+        return <LoginForm />;
+    }
 }
 
 const LoginOrInfo = connect(
-  ({session}) => ({session}))(LOI);
+    ({ session }) => ({ session }))(LOI);
 
-function Link({to, children}) {
-  return (
-    <Nav.Item>
-      <NavLink to={to} exact className="nav-link"
-               activeClassName="active">
-        {children}
-      </NavLink>
-    </Nav.Item>
-  );
+function CheckForSignUp({ session }) {
+    if (!session) {
+        return (
+            <Button variant="success">
+                <Link to="/signup">Sign Up</Link>
+            </Button>
+        );
+    } else {
+        return (null);
+    }
 }
 
-function AppNav({error}) {
-  let error_row = null;
+const Signup = connect(({ session }) => ({ session }))(CheckForSignUp);
 
-  if (error) {
-    error_row = (
-      <Row>
-        <Col>
-          <Alert variant="danger">{error}</Alert>
-        </Col>
-      </Row>
+function AppNav({ error }) {
+    let error_msg = null;
+
+    if (error) {
+        error_msg = (
+            <Row>
+                <Col>
+                    <Alert variant="danger">{error}</Alert>
+                </Col>
+            </Row>
+        );
+    }
+
+    return (
+        <Container className="nav-bar">
+            <Row>
+                <Button className="home-btn" variant="primary">
+                    <Link to="/">Upcoming Events List</Link>
+                </Button>
+                <Col>
+                    <LoginOrInfo />
+                </Col>
+                <Signup />
+            </Row>
+            {error_msg}
+        </Container>
     );
-  }
-
-  return (
-    <div>
-      <Row>
-        <Col>
-          <Nav variant="pills">
-            <Link to="/">Feed</Link>
-            <Link to="/users">Users</Link>
-          </Nav>
-        </Col>
-        <Col>
-          <LoginOrInfo />
-        </Col>
-      </Row>
-      { error_row }
-    </div>
-  );
 }
 
-export default connect(({error}) => ({error}))(AppNav);
+export default connect(({ error }) => ({ error }))(AppNav);

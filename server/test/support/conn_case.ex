@@ -1,4 +1,4 @@
-defmodule PhotoBlogWeb.ConnCase do
+defmodule CompanyTestWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule PhotoBlogWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use PhotoBlogWeb.ConnCase, async: true`, although
+  by setting `use CompanyTestWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,20 +22,20 @@ defmodule PhotoBlogWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import PhotoBlogWeb.ConnCase
+      import CompanyTestWeb.ConnCase
 
-      alias PhotoBlogWeb.Router.Helpers, as: Routes
+      alias CompanyTestWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint PhotoBlogWeb.Endpoint
+      @endpoint CompanyTestWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PhotoBlog.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(CompanyTest.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PhotoBlog.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(CompanyTest.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

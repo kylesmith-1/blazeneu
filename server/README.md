@@ -1,4 +1,4 @@
-# PhotoBlog
+# CompanyTest
 
 To start your Phoenix server:
 

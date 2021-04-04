@@ -7,19 +7,23 @@
 # General application configuration
 use Mix.Config
 
-config :photo_blog,
-  ecto_repos: [PhotoBlog.Repo]
+secret_key_base =
+  System.get_env("SECRET_KEY_BASE") ||
+    raise """
+    environment variable SECRET_KEY_BASE is missing.
+    You can generate one by calling: mix phx.gen.secret
+    """
 
-config :photo_blog,
-  mix_env: "#{Mix.env()}"
+config :events_app,
+  ecto_repos: [CompanyTest.Repo]
 
 # Configures the endpoint
-config :photo_blog, PhotoBlogWeb.Endpoint,
+config :events_app, CompanyTestWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "Q3V5uG7FQxHcj/t+96sDr+JkdBmevkLcMywNDMqpA26ikWFsG0F4y5NJtiRMEUNu",
-  render_errors: [view: PhotoBlogWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: PhotoBlog.PubSub,
-  live_view: [signing_salt: "ePL3319u"]
+  secret_key_base: secret_key_base,
+  render_errors: [view: CompanyTestWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: CompanyTest.PubSub,
+  live_view: [signing_salt: "cGQ6wzvU"]
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -13,8 +13,8 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <App />
-      </Router>
+         <App />
+        </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
