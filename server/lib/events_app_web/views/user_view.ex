@@ -15,6 +15,7 @@ defmodule CompanyTestWeb.UserView do
       id: user.id,
       name: user.name,
       email: user.email,
+      admin: user.admin,
       password_hash: user.password_hash
     }
   end

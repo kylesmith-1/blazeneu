@@ -1,39 +1,39 @@
 use Mix.Config
 
-username =
-  System.get_env("USERNAME") ||
-    raise """
-    environment variable USERNAME is missing.
-    You can generate one by calling: mix phx.gen.secret
-    """
+# username =
+#   System.get_env("USERNAME") ||
+#     raise """
+#     environment variable USERNAME is missing.
+#     You can generate one by calling: mix phx.gen.secret
+#     """
 
-password =
-  System.get_env("PASSWORD") ||
-    raise """
-    environment variable PASSWORD is missing.
-    You can generate one by calling: mix phx.gen.secret
-    """
+# password =
+#   System.get_env("PASSWORD") ||
+#     raise """
+#     environment variable PASSWORD is missing.
+#     You can generate one by calling: mix phx.gen.secret
+#     """
 
-database_postgres =
-  System.get_env("DATABASE_POSTGRES") ||
-    raise """
-    environment variable DATABASE_POSTGRES is missing.
-    You can generate one by calling: mix phx.gen.secret
-    """
+# database_postgres =
+#   System.get_env("DATABASE_POSTGRES") ||
+#     raise """
+#     environment variable DATABASE_POSTGRES is missing.
+#     You can generate one by calling: mix phx.gen.secret
+#     """
 
-hostname_postgres =
-  System.get_env("HOSTNAME_POSTGRES") ||
-    raise """
-    environment variable HOSTNAME_POSTGRES is missing.
-    You can generate one by calling: mix phx.gen.secret
-    """
+# hostname_postgres =
+#   System.get_env("HOSTNAME_POSTGRES") ||
+#     raise """
+#     environment variable HOSTNAME_POSTGRES is missing.
+#     You can generate one by calling: mix phx.gen.secret
+#     """
 
 # Configure your database
 config :events_app, CompanyTest.Repo,
-username: username,
-password: password,
-database: database_postgres,
-hostname: hostname_postgres,
+username: "blazeneu",
+password: "atlan99",
+database: "events_app_dev",
+hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

@@ -21,4 +21,4 @@ defmodule Inject do
 end
 
 alice = Repo.insert!(%User{name: "alice", email: "alice99999999@gmail.com", password_hash: "123321"})
-bob = Repo.insert!(%User{name: "bob", email: "bob99999999@gmail.com", password_hash: "asdfgh"})
+bob = Repo.insert!(%User{name: "bob", email: "bob99999999@gmail.com", admin: true, password_hash: "asdfgh"})

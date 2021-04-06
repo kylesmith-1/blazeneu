@@ -5,6 +5,7 @@ defmodule CompanyTest.Users.User do
   schema "users" do
     field :name, :string
     field :email, :string
+    field :admin, :boolean
     field :password_hash, :string
 
     has_many :events, CompanyTest.Events.Event
@@ -22,7 +23,7 @@ defmodule CompanyTest.Users.User do
     end
 
     user
-    |> cast(attrs, [:name, :email, :password_hash])
+    |> cast(attrs, [:name, :email, :admin, :password_hash])
     |> validate_required([:name, :email, :password_hash])
   end
 end

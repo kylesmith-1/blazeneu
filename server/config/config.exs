@@ -7,12 +7,12 @@
 # General application configuration
 use Mix.Config
 
-secret_key_base =
-  System.get_env("SECRET_KEY_BASE") ||
-    raise """
-    environment variable SECRET_KEY_BASE is missing.
-    You can generate one by calling: mix phx.gen.secret
-    """
+secret_key_base = "ZrDxnPdDNugjZ7nJUViLoeTyQvQPKhX/QGCPcZdNvW7zRfzQz/kdUM3K7HrrD37/"
+  # System.get_env("SECRET_KEY_BASE") ||
+  #   raise """
+  #   environment variable SECRET_KEY_BASE is missing.
+  #   You can generate one by calling: mix phx.gen.secret
+  #   """
 
 config :events_app,
   ecto_repos: [CompanyTest.Repo]
