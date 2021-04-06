@@ -27,6 +27,7 @@ defmodule CompanyTestWeb.Router do
     resources "/comments", CommentController, except: [:new, :edit]
     resources "/invites", InviteController, except: [:new, :edit]
     resources "/session", SessionController, only: [:create]
+    resources "/companies", CompanyController, except: [:new, :edit]
   end
 
 
