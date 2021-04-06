@@ -6,6 +6,8 @@ defmodule CompanyTest.Companies.Company do
     field :location, :string
     field :name, :string
 
+    has_many :entries, CompanyTest.Entries.Entry
+
     timestamps()
   end
 

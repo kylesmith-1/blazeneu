@@ -13,6 +13,7 @@
 alias CompanyTest.Repo
 alias CompanyTest.Users.User
 alias CompanyTest.Companies.Company
+alias CompanyTest.Entries.Entry
 
 defmodule Inject do
 
@@ -25,3 +26,5 @@ alice = Repo.insert!(%User{name: "alice", email: "alice99999999@gmail.com", pass
 bob = Repo.insert!(%User{name: "bob", email: "bob99999999@gmail.com", admin: true, password_hash: "asdfgh"})
 
 apple=Repo.insert!(%Company{name: "Apple", location: "Idk, California or Something"})
+
+appleTestReport = Repo.insert!(%Entry{drug_test: false, additional_notes: "did not have to pee in a cup", user_id: 1, company_id: 1})

@@ -11,6 +11,8 @@ defmodule CompanyTest.Users.User do
     has_many :events, CompanyTest.Events.Event
     has_many :comments, CompanyTest.Comments.Comment
 
+    has_many :entries, CompanyTest.Entries.Entry
+
     timestamps()
   end
 
