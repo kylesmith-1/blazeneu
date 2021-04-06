@@ -25,8 +25,8 @@ defmodule CompanyTestWeb.CommentView do
     %{
       id: comment.id,
       body: comment.body,
-      event_id: comment.event.id,
-      user: user
+      company_id: comment.company_id,
+      user: comment.user_id
     }
   end
 end

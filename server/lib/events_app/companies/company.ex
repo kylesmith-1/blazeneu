@@ -8,6 +8,8 @@ defmodule CompanyTest.Companies.Company do
 
     has_many :entries, CompanyTest.Entries.Entry
 
+    has_many :comments, CompanyTest.Comments.Comment
+
     timestamps()
   end
 

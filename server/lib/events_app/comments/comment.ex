@@ -5,7 +5,7 @@ defmodule CompanyTest.Comments.Comment do
   schema "comments" do
     field :body, :string
 
-    belongs_to :event, CompanyTest.Events.Event
+    belongs_to :company, CompanyTest.Companies.Company
     belongs_to :user, CompanyTest.Users.User
 
     timestamps()
@@ -14,7 +14,7 @@ defmodule CompanyTest.Comments.Comment do
   @doc false
   def changeset(comment, attrs) do
     comment
-    |> cast(attrs, [:body, :event_id, :user_id])
-    |> validate_required([:body,  :event_id, :user_id])
+    |> cast(attrs, [:body, :company_id, :user_id])
+    |> validate_required([:body,  :company_id, :user_id])
   end
 end
