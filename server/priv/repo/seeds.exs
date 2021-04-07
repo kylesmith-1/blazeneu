@@ -28,6 +28,10 @@ bob = Repo.insert!(%User{name: "bob", email: "bob99999999@gmail.com", admin: tru
 
 apple=Repo.insert!(%Company{name: "Apple", location: "Idk, California or Something"})
 
+trustmap=Repo.insert!(%Company{name: "Trustmap", location: "Remote"})
+
+tjx=Repo.insert!(%Company{name: "TJX", location: "marlborough"})
+
 appleTestReport = Repo.insert!(%Entry{drug_test: false, additional_notes: "did not have to pee in a cup", user_id: 1, company_id: 1})
 
 appleComment = Repo.insert!(%Comment{body: "does anyone know what this company does?", company_id: 1, user_id: 1})
