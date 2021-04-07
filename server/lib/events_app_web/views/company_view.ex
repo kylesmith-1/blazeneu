@@ -13,9 +13,6 @@ defmodule CompanyTestWeb.CompanyView do
 
   def render("company.json", %{company: company}) do
 
-    company = company
-
-
     %{id: company.id,
       name: company.name,
       location: company.location}

@@ -93,6 +93,7 @@ export async function create_company(company) {
 	return await text.json();
 }
 
+
 export async function edit_company(id, company) {
 	let opts = {
 		method: 'PATCH',

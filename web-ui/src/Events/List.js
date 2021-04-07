@@ -83,7 +83,7 @@ function List({ companies, session }) {
 
     return (
         <Container>
-            <h1>Upcoming Events</h1>
+            <h1>Companies</h1>
             <CompanyView session={session} />
             <CreateCompany session={session} />
         </Container>

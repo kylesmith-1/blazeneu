@@ -37,12 +37,12 @@ function EditCompany({companies, session }) {
 						<Form.Group>
 							<Form.Label>Company Title</Form.Label>
 							<Form.Control type="text"
-								onChange={(ev) => updateBody("company_name", ev)}
+								onChange={(ev) => updateBody("name", ev)}
 								value={company.name || ""} />
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Company Location</Form.Label>
-							<Form.Control type="text" onChange={(ev) => updateBody("body", ev)}
+							<Form.Control type="text" onChange={(ev) => updateBody("location", ev)}
 								value={company.location || ""} />
 						</Form.Group>
 						<Button variant="success"
