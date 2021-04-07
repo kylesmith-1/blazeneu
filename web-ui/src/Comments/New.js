@@ -9,7 +9,7 @@ function CreateComment() {
 
 	const [comment, setComment] = useState({
 		body: "",
-		event_id: location.pathname.slice(-1)
+		company_id: location.pathname.slice(-1)
 	});
 
 	function submit(ev) {
@@ -32,7 +32,7 @@ function CreateComment() {
 			<Col>
 				<Form onSubmit={submit}>
 					<Form.Group>
-						<Form.Label>Add comments here about the event</Form.Label>
+						<Form.Label>Add comments here about the company</Form.Label>
 						<Form.Control onChange={updateBody} value={comment.body || ""} />
 					</Form.Group>
 					<Button variant="success" type="submit">Post Comment</Button>

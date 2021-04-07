@@ -4,9 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import "./App.scss";
 import Nav from './Nav';
 import List from './Events/List';
-import EventsNew from './Events/New';
-import EditEvent from './Events/Edit';
-import SingleEvent from './Events/View';
+import CompanyNew from './Events/New';
+import EditCompany from './Events/Edit';
+import SingleCompany from './Events/View';
 import UsersNew from './Users/New';
 import EditUser from './Users/Edit';
 import SingleUser from './Users/View';
@@ -24,14 +24,14 @@ function App() {
         <Route path="/signup" exact>
           <UsersNew />
         </Route>
-        <Route path="/event/new" exact>
-          <EventsNew />
+        <Route path="/company/new" exact>
+          <CompanyNew />
         </Route>
-        <Route path="/event/view/">
-          <SingleEvent />
+        <Route path="/company/view/">
+          <SingleCompany />
         </Route>
-        <Route path="/event/edit/">
-          <EditEvent />
+        <Route path="/company/edit/">
+          <EditCompany />
         </Route>
         <Route path="/user/view" exact>
           <SingleUser />

@@ -1,56 +1,53 @@
 import { Row, Container, Button, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import { delete_event } from '../api';
 
-function Event({ event, session }) {
-    let deleteEvent = null;
+function Company({ company, session }) {
+    // let deleteCompany = null;
     let edit = null;
     let show = null;
     let history = useHistory();
 
-    if (event.user.id === session.user_id) {
+
+    // access levels for users 
+    // if (company.user.id === session.user_id) {
         edit = (
-            <Button variant="info" onClick={edit_Event}>Edit Event</Button>
+            <Button variant="info" onClick={edit_Company}>Edit Company Info</Button>
         );
-        deleteEvent = (
-            <Button variant="danger" onClick={() => delete_event(event.id)}>Delete Event</Button>
-        );
+        // deleteCompany = (
+        //     <Button variant="danger" onClick={() => delete_Company(company.id)}>Delete Company</Button>
+        // );
+    // }
+
+    function showCompany() {
+        history.push("/company/view/" + company.id);
     }
 
-    function showEvent() {
-        history.push("/event/view/" + event.id);
-    }
-
-    function edit_Event() {
-        history.push("/event/edit/" + event.id);
+    function edit_Company() {
+        history.push("/company/edit/" + company.id);
         history.go(0);
     }
 
     show = (
-        <Button className="show-btn" variant="primary" onClick={showEvent}> Show</Button>
+        <Button className="show-btn" variant="primary" onClick={showCompany}> Show</Button>
     );
 
 
     return (
         <Card style={{ width: '16rem' }}>
             <Card.Body>
-                <Card.Title>{event.event_title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{event.date}</Card.Subtitle>
-                <Card.Text>
-                    <i>About this event: </i>
-                    <br></br>
-                    {event.body}
-                </Card.Text>
-                <p>Event hosted by:
-               {event.user.name}</p>
+                <Card.Title>{company.name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{company.location}</Card.Subtitle>
+                {/* <Card.Text>
+     <p> bleeeeeep bloop blop</p>
+                </Card.Text> */}
                 <br></br>
                 <div className="event-btn-container">
                     {show}
                     <br></br>
                     {edit}
                     <br></br>
-                    {deleteEvent}
+                    {/* {deleteCompany} */}
                 </div>
             </Card.Body>
         </Card>
@@ -58,44 +55,40 @@ function Event({ event, session }) {
 }
 
 
-function List({ events, session }) {
+function List({ companies, session }) {
     let history = useHistory();
 
-    let cards = events.map((event) => (
-        <Event event={event} session={session} key={event.id} />
+    let cards = companies.map((company) => (
+        <Company company={company} session={session} key={company.id} />
     ));
 
-    function newEventRoute() {
-        history.push("/event/new");
+    function newCompanyRoute() {
+        history.push("/company/new");
         history.go(0);
     }
 
-    function CreateEvent({ session }) {
+    function CreateCompany({ session }) {
         if (session) {
             return (
-                <Button className="create-event" variant="outline-primary" onClick={() => newEventRoute()}>New Event</Button>
+                <Button className="create-event" variant="outline-primary" onClick={() => newCompanyRoute()}>New Company</Button>
             );
         } else {
             return null;
         }
     }
 
-    function EventPermission({ session }) {
-        if (session) {
-            return (<Container><Row>{cards}</Row></Container>);
-        } else {
-            return (<h4>Howdy! Please login/signup to view events :)</h4>);
-        }
+    function CompanyView() {
+        return (<Container><Row>{cards}</Row></Container>);
     }
 
     return (
         <Container>
             <h1>Upcoming Events</h1>
-            <EventPermission session={session} />
-            <CreateEvent session={session} />
+            <CompanyView session={session} />
+            <CreateCompany session={session} />
         </Container>
     );
 }
 
 export default connect(
-    ({ events, session }) => ({ events, session }))(List);
+    ({ companies, session }) => ({ companies, session }))(List);

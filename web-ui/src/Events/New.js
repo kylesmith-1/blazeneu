@@ -1,73 +1,47 @@
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import { create_event, fetch_events } from '../api';
+import { create_company, fetch_companies } from '../api';
 import { useHistory } from 'react-router-dom';
 
 
-import flatpickr from "flatpickr";
-
-function EventsNew({ session }) {
+function CompanyNew() {
 	let history = useHistory();
 
-	const [event, setEvent] = useState({
+	const [company, setCompany] = useState({
 		name: "",
-		date: "",
-		body: ""
+		location: ""
 	});
 
 	function submit(ev) {
 		ev.preventDefault();
-		create_event(event).then(() => {
+		create_company(company).then(() => {
 			history.push("/");
-			fetch_events();
+			fetch_companies();
 		});
 	}
 
 	function updateBody(field, ev) {
-		let event_made = Object.assign({}, event);
-		event_made[field] = ev.target.value;
-		setEvent(event_made);
+		let company_made = Object.assign({}, company);
+		company_made[field] = ev.target.value;
+		setCompany(company_made);
 	}
-
-
-	function updateDate(selectedDate, d, instance) {
-		let newEvent = Object.assign({}, event);
-		newEvent["date"] = d;
-		setEvent(newEvent);
-	}
-
-
-	if (session) {
-		// https://flatpickr.js.org/formatting/ & Piazza for the idea!
-		window.addEventListener('load', () => {
-			flatpickr('.flatpickr-datetime', {
-				enableTime: true,
-				dateFormat: "D, F J Y, H:i",
-				onChange: updateDate
-			});
-		});
 
 		return (
 			<Row>
 				<Col>
-					<h1>New Event</h1>
+					<h1>New Company</h1>
 					<Form onSubmit={submit}>
 						<Form.Group>
-							<Form.Label>Date</Form.Label>
+							<Form.Label>Company Title</Form.Label>
 							<Form.Control type="text"
-								className="flatpickr-datetime" />
+								onChange={(ev) => updateBody("name", ev)}
+								value={company.name || ""} />
 						</Form.Group>
 						<Form.Group>
-							<Form.Label>Event Title</Form.Label>
-							<Form.Control type="text"
-								onChange={(ev) => updateBody("event_title", ev)}
-								value={event.event_title || ""} />
-						</Form.Group>
-						<Form.Group>
-							<Form.Label>Description</Form.Label>
-							<Form.Control onChange={(ev) => updateBody("body", ev)}
-								value={event.body || ""} />
+							<Form.Label>Location</Form.Label>
+							<Form.Control onChange={(ev) => updateBody("location", ev)}
+								value={company.location || ""} />
 						</Form.Group>
 						<br />
 						<Button variant="success"
@@ -77,14 +51,7 @@ function EventsNew({ session }) {
 					</Form>
 				</Col>
 			</Row>
-		);
-	} else {
-		return (
-			<Row>
-				<h4>Please sign in or signup to create a new event.</h4>
-			</Row>
-		);
-	}
+		); 
 }
 
-export default connect(({ session }) => ({ session }))(EventsNew);
+export default connect(({ session }) => ({ session }))(CompanyNew);

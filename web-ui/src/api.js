@@ -30,10 +30,10 @@ export function fetch_users() {
 	});
 }
 
-export function fetch_events() {
-	api_get("/events").then((data) => {
+export function fetch_companies() {
+	api_get("/companies").then((data) => {
 		let action = {
-			type: 'events/set',
+			type: 'companies/set',
 			data: data
 		}
 		store.dispatch(action);
@@ -65,17 +65,17 @@ async function abstract_opts(path, opts) {
 	return await text.json();
 }
 
-export function get_event(events, id) {
-	for (var i = 0; i < events.length; i++) {
-		if (events[i].id === id) {
-			return events[i];
+export function get_company(companies, id) {
+	for (var i = 0; i < companies.length; i++) {
+		if (companies[i].id === id) {
+			return companies[i];
 		}
 	}
 	return null;
 }
 
 
-export async function create_event(event) {
+export async function create_company(company) {
 	let state = store.getState();
 	let token = state?.session?.token;
 
@@ -85,27 +85,27 @@ export async function create_event(event) {
 			'Content-Type': 'application/json',
 			'x-auth': token
 		},
-		body: JSON.stringify({ "event": event })
+		body: JSON.stringify({ "company": company })
 	};
 
 	let text = await fetch(
-		"http://localhost:4000/api/v1/events", opts);
+		"http://localhost:4000/api/v1/companies", opts);
 	return await text.json();
 }
 
-export async function edit_event(id, event) {
+export async function edit_company(id, company) {
 	let opts = {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify({ "id": id, "event": event })
+		body: JSON.stringify({ "id": id, "company": company })
 	};
 
-	return abstract_opts("/events/" + id, opts);
+	return abstract_opts("/companies/" + id, opts);
 }
 
-export async function delete_event(id) {
+export async function delete_company(id) {
 	let opts = {
 		method: 'DELETE',
 		headers: {
@@ -115,8 +115,8 @@ export async function delete_event(id) {
 	};
 
 	await fetch(
-		"http://localhost:4000/api/v1" + "/events/" + id, opts);
-	fetch_events();
+		"http://localhost:4000/api/v1" + "/companies/" + id, opts);
+	fetch_companies();
 }
 
 export async function create_comment(comment) {
@@ -144,30 +144,9 @@ export async function delete_comment(id) {
 
 	await fetch(
 		"http://localhost:4000/api/v1" + "/comments/" + id, opts);
-	fetch_events();
+	fetch_companies();
 }
 
-export async function create_invite(invite) {
-	let opts = {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({ "invite": invite })
-	};
-	return abstract_opts("/invites", opts);
-}
-
-export async function edit_invite(id, response) {
-	let opts = {
-		method: 'PATCH',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({ "id": response.id, "invite": response })
-	};
-	return abstract_opts("/invites/" + id, opts);
-}
 
 export function create_user(user) {
 	let data = new FormData();
@@ -200,5 +179,5 @@ export function edit_user(id, user) {
 
 export function load_defaults() {
 	fetch_users();
-	fetch_events();
+	fetch_companies();
 }
