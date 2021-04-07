@@ -5,8 +5,10 @@ import "./App.scss";
 import Nav from './Nav';
 import List from './Events/List';
 import CompanyNew from './Events/New';
+import EntryNew from './Entries/New';
 import EditCompany from './Events/Edit';
 import SingleCompany from './Events/View';
+import ViewEntry from './Entries/View';
 import UsersNew from './Users/New';
 import EditUser from './Users/Edit';
 import SingleUser from './Users/View';
@@ -38,6 +40,12 @@ function App() {
         </Route>
         <Route path="/user/edit" exact>
           <EditUser />
+        </Route>
+        <Route path="/entry/new" exact>
+          <EntryNew />
+        </Route>
+        <Route path="/entry/view/">
+          <ViewEntry />
         </Route>
       </Switch>
     </Container>
