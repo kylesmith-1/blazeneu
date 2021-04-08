@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { create_entry } from '../api'; //todo, does not exist yet
 
-function CreateEntry() {
+function CreateEntry({company, user}) {
 	let history = useHistory();
 	const location = useLocation();
 
@@ -13,8 +13,8 @@ function CreateEntry() {
 		coop_cycle: "Null Null",
         verified: false,
         additional_notes: "",
-        company_id: 1, //where to get this fom? they will need to be passed
-        user_id: 1 //where to get this from? they will need to be passed
+        company_id: company.id, //where to get this fom? they will need to be passed
+        user_id: user.id //where to get this from? they will need to be passed
         //need more here
 		//company_id: location.pathname.slice(-1)
 	});
@@ -163,7 +163,7 @@ function CreateEntry() {
 	return (
 		<Row>
 			<Col>
-				<h2>Company Name Here</h2>
+				<h2>{company.name}</h2>
 				<Form onSubmit={submit}>
 					{coop_cycle()}
 					{drug_tested_radio()}

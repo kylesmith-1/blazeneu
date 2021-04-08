@@ -1,8 +1,8 @@
 import { Row, Col, Button, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useLocation, useHistory } from "react-router-dom";
-import CreateComment from '../Comments/New';
-// import ViewComments from '../Comments/View';
+//import CreateComment from '../Comments/New';
+import ViewEntries from '../Entries/View';
 import { get_company } from '../api';
 
 
@@ -12,6 +12,7 @@ function SingleCompany({ companies, session }) {
 	let history = useHistory();
 	let id = parseInt(location.pathname.slice(-1));
 	let company = get_company(companies, id);
+	// alert(company.entries);
 
 
 	// if (session) { --> can add back to control whether they can add entries later
@@ -20,7 +21,7 @@ function SingleCompany({ companies, session }) {
 	let comments = null;
 	// if (company.user.id === session.user_id) {
 	editbtn = (<Button variant="success" onClick={editCompanyRoute}>Edit Company</Button>)
-	comments = (<CreateComment company_id={company.id}></CreateComment>)
+	//comments = (<CreateComment company_id={company.id}></CreateComment>)
 	// } 
 	// 	else {
 	// 		typeOfInvite = <h3><b>You were not invited to this event :(</b></h3>
@@ -55,6 +56,8 @@ function SingleCompany({ companies, session }) {
 				</Col>
 			</Row>
 			<br />
+			<h4>*Adding new entries is currently broken, working on fixing.*</h4>
+			<ViewEntries company={company} session={session} />
 			{/* <ViewComments company={company} session={session} /> */}
 			{/* {comments} */}
 		</Container>

@@ -43,7 +43,7 @@ function App() {
           <EditUser />
         </Route>
         <Route path="/entry/new" exact>
-          <EntryNew />
+          <EntryNew company={1} user={1}/>
         </Route>
         <Route path="/entry/button" exact>
           <Demo2 />
