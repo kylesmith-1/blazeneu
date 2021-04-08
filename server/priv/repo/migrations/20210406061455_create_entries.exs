@@ -6,6 +6,7 @@ defmodule CompanyTest.Repo.Migrations.CreateEntries do
       add :drug_test, :boolean, default: false, null: false
       add :continuous_drug_testing, :boolean, default: false, null: false
       add :additional_notes, :text
+      add :coop_cycle, :string
       add :verified, :boolean, default: false, null: false
       
       add :user_id, references(:users, on_delete: :nothing), null: false

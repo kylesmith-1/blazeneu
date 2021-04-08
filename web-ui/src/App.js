@@ -6,6 +6,7 @@ import Nav from './Nav';
 import List from './Events/List';
 import CompanyNew from './Events/New';
 import EntryNew from './Entries/New';
+import Demo2 from './Entries/Button';
 import EditCompany from './Events/Edit';
 import SingleCompany from './Events/View';
 import ViewEntry from './Entries/View';
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path="/entry/new" exact>
           <EntryNew />
+        </Route>
+        <Route path="/entry/button" exact>
+          <Demo2 />
         </Route>
         <Route path="/entry/view/">
           <ViewEntry />
