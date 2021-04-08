@@ -15,6 +15,7 @@ alias CompanyTest.Users.User
 alias CompanyTest.Companies.Company
 alias CompanyTest.Entries.Entry
 alias CompanyTest.Comments.Comment
+alias CompanyTest.Notifications.Notification
 
 defmodule Inject do
 
@@ -35,3 +36,5 @@ tjx=Repo.insert!(%Company{name: "TJX", location: "marlborough"})
 appleTestReport = Repo.insert!(%Entry{drug_test: false, additional_notes: "did not have to pee in a cup", user_id: 1, company_id: 1})
 
 appleComment = Repo.insert!(%Comment{body: "does anyone know what this company does?", company_id: 1, user_id: 1})
+
+notification = Repo.insert!(%Notification{user_id: 1, company_id: 1})
