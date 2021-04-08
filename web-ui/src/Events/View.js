@@ -1,9 +1,11 @@
 import { Row, Col, Button, Container } from 'react-bootstrap';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useLocation, useHistory } from "react-router-dom";
 //import CreateComment from '../Comments/New';
 import ViewEntries from '../Entries/View';
 import { get_company } from '../api';
+import EntryNew from '../Entries/New';
 
 
 function SingleCompany({ companies, session }) {
@@ -34,13 +36,28 @@ function SingleCompany({ companies, session }) {
 		history.go(0);
 	}
 
+	function loginNotice() {
+		if (session === null || session === "null") {
+			return (
+				<Row>
+					<Col>
+					<h3>Please register or login to create entries.</h3>
+					</Col>
+				</Row>
+			);
+		}
+		else {
+			return (<EntryNew company={company} session={session}/>);
+		}
+	}
+
 	return (
 		<Container>
 			<br></br>
 			<br></br>
 			<Row>
 				<Col>
-					<h2>Company Details</h2>
+					<h2>Drug Testing Information for <b>{company.name}</b></h2>
 				</Col>
 				<Col>
 					{editbtn}
@@ -56,7 +73,7 @@ function SingleCompany({ companies, session }) {
 				</Col>
 			</Row>
 			<br />
-			<h4>*Adding new entries is currently broken, working on fixing.*</h4>
+			{loginNotice()}
 			<ViewEntries company={company} session={session} />
 			{/* <ViewComments company={company} session={session} /> */}
 			{/* {comments} */}
