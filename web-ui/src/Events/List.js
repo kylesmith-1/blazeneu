@@ -1,6 +1,35 @@
 import { Row, Container, Button, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
+import { useState } from 'react';
+
+const SearchBar = ({ searchQuery, setSearchQuery }) => (
+    <form action="/" method="get">
+        <label htmlFor="header-search">
+            <span className="visually-hidden">Search blog posts</span>
+        </label>
+        <input
+            value={searchQuery}
+            onInput={e => setSearchQuery(e.target.value)}
+            type="text"
+            id="header-search"
+            placeholder="Search blog posts"
+            name="s"
+        />
+        <button type="submit">Search</button>
+    </form>
+);
+
+const filterCompanies = (companies, query) => {
+    if (!query) {
+        return companies;
+    }
+
+    return companies.filter((company) => {
+        const companyName = company.name.toLowerCase();
+        return companyName.includes(query);
+    });
+};
 
 function Company({ company, session }) {
     // let deleteCompany = null;
@@ -11,12 +40,12 @@ function Company({ company, session }) {
 
     // access levels for users 
     // if (company.user.id === session.user_id) {
-        edit = (
-            <Button variant="info" onClick={edit_Company}>Edit Company Info</Button>
-        );
-        // deleteCompany = (
-        //     <Button variant="danger" onClick={() => delete_Company(company.id)}>Delete Company</Button>
-        // );
+    edit = (
+        <Button variant="info" onClick={edit_Company}>Edit Company Info</Button>
+    );
+    // deleteCompany = (
+    //     <Button variant="danger" onClick={() => delete_Company(company.id)}>Delete Company</Button>
+    // );
     // }
 
     function showCompany() {
@@ -57,8 +86,12 @@ function Company({ company, session }) {
 
 function List({ companies, session }) {
     let history = useHistory();
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+    const [searchQuery, setSearchQuery] = useState(query || '');
+    const filteredCompanies = filterCompanies(companies, searchQuery);
 
-    let cards = companies.map((company) => (
+    let cards = filteredCompanies.map((company) => (
         <Company company={company} session={session} key={company.id} />
     ));
 
@@ -83,6 +116,10 @@ function List({ companies, session }) {
 
     return (
         <Container>
+            <div >
+                <SearchBar searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery} />
+            </div>
             <h1>Companies</h1>
             <CompanyView session={session} />
             <CreateCompany session={session} />

@@ -15,6 +15,7 @@ import EditUser from './Users/Edit';
 import SingleUser from './Users/View';
 
 
+
 function App() {
 
   return (
@@ -43,7 +44,7 @@ function App() {
           <EditUser />
         </Route>
         <Route path="/entry/new" exact>
-          <EntryNew company={1} user={1}/>
+          <EntryNew company={1} user={1} />
         </Route>
         <Route path="/entry/button" exact>
           <Demo2 />
