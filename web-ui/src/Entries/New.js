@@ -37,13 +37,18 @@ function CreateEntry() {
     function updateDrugTested(ev) {
 		let newEntry = Object.assign({}, entry);
 		newEntry["drug_test"] = ev.target.value;
+		if (ev.target.value === false || ev.target.value === "false") {
+			newEntry["continuous_drug_testing"] = false;
+		}
 		setEntry(newEntry);
 	}
 
 	function updateContDrugTested(ev) {
-		let newEntry = Object.assign({}, entry);
-		newEntry["continuous_drug_testing"] = ev.target.value;
-		setEntry(newEntry);
+		if (entry.drug_test != false && entry.drug_test != "false") {
+			let newEntry = Object.assign({}, entry);
+			newEntry["continuous_drug_testing"] = ev.target.value;
+			setEntry(newEntry);
+		}
 	}
 
 	function updateCoopSeason(ev) {
@@ -127,13 +132,13 @@ function CreateEntry() {
 	function cont_drug_tested_radio() {
 		return(
 	     <Form.Group>
-		  <Form.Label>If so, were you continuously drug tested during this co-op?</Form.Label>
+		  <Form.Label>If so, were you continuously drug tested during this co-op? *</Form.Label>
 		  <br/>
           <label>
             <input
               type="radio"
               value={true}
-              checked={entry.continuous_drug_testing === true || entry.continuous_drug_testing === "true"}
+              checked={(entry.continuous_drug_testing === true || entry.continuous_drug_testing === "true") && (entry.drugtest != false && entry.drugtest != "false")}
 			  onChange={updateContDrugTested}
             />
             Yes
@@ -142,7 +147,7 @@ function CreateEntry() {
             <input
               type="radio"
               value={false}
-              checked={entry.continuous_drug_testing === false || entry.continuous_drug_testing === "false"}
+              checked={entry.continuous_drug_testing === false || entry.continuous_drug_testing === "false" || entry.drug_test == "false" || entry.drug_test == false}
 			  onChange={updateContDrugTested}
             />
             No
