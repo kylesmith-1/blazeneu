@@ -1,4 +1,4 @@
-defmodule EventsAppWeb.NotificationView do
+defmodule CompanyTestWeb.NotificationView do
   use CompanyTestWeb, :view
   alias CompanyTestWeb.NotificationView
 
