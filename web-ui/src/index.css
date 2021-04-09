@@ -140,6 +140,9 @@ h3 {
 .create-event {
   display:flex;
   justify-content: center;
+  background-color: #DF6028;
+  border-radius: 5px;
+
 }
 
 .event-details {
@@ -231,10 +234,6 @@ margin-bottom: 25px !important;
 
 
 
-
-
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
-
 body {
     background-color: #E7E9F5;
     font-family: 'Heebo', sans-serif
@@ -296,3 +295,4 @@ span.mb-2 {
 h5 span {
     color: #869099
 }
+

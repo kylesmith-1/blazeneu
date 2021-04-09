@@ -111,7 +111,10 @@ function List({ companies, session }) {
     function CreateCompany({ session }) {
         if (session) {
             return (
-                <Button className="create-event" variant="outline-primary" onClick={() => newCompanyRoute()}>New Company</Button>
+                <div class="container d-flex justify-content-center">
+                    <p>Didn’t find what you’re looking for? Add a company!</p>
+                <Button className="create-event"  onClick={() => newCompanyRoute()}>Add a new company</Button>
+                </div>
             );
         } else {
             return null;

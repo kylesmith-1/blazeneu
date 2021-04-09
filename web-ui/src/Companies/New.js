@@ -36,7 +36,6 @@ function CompanyNew() {
 	}
 
 	function updateLocation() {
-
 		if (!(manual.manual)) {
 			let address = document.getElementById("jrj").value.toString();
 			console.log(address);
@@ -102,9 +101,7 @@ function CompanyNew() {
 							onChange={(ev) => updateBody("name", ev)}
 							value={company.name || ""} />
 					</Form.Group>
-
-						<Home />
-					</Form.Group> */}
+					
 					{returnLocationEntry()}
 					<br />
 					<br />
