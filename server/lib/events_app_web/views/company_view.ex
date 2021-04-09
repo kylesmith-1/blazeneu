@@ -2,6 +2,7 @@ defmodule CompanyTestWeb.CompanyView do
   use CompanyTestWeb, :view
   alias CompanyTestWeb.CompanyView
   alias CompanyTestWeb.EntryView
+  alias CompanyTestWeb.NotificationView
   alias CompanyTest.Repo
 
   def render("index.json", %{companies: companies}) do
@@ -15,6 +16,7 @@ defmodule CompanyTestWeb.CompanyView do
   def render("company.json", %{company: company}) do
     company = company
     |> Repo.preload(:entries)
+    |> Repo.preload(:notifications)
 
     companyEntries = company.entries
     |> Repo.preload(:company)
@@ -26,9 +28,20 @@ defmodule CompanyTestWeb.CompanyView do
       nil
     end
 
+    companyNotifications = company.notifications
+    |> Repo.preload(:company)
+    |> Repo.preload(:user)
+
+    notifications = if Ecto.assoc_loaded?(company.notifications) do
+      render_many(companyNotifications, NotificationView, "notification.json")
+    else
+      nil
+    end
+
     %{id: company.id,
       name: company.name,
       location: company.location,
-      entries: entries}
+      entries: entries,
+      notifications: notifications}
   end
 end
