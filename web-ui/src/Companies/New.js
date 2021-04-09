@@ -103,8 +103,6 @@ function CompanyNew() {
 							value={company.name || ""} />
 					</Form.Group>
 
-						<Home />
-					</Form.Group> */}
 					{returnLocationEntry()}
 					<br />
 					<br />
@@ -115,7 +113,7 @@ function CompanyNew() {
 					<Button variant="success"
 						onClick={updateLocation} type="submit">
 						Create
-						</Button>
+					</Button>
 				</Form>
 			</Col>
 		</Row>
