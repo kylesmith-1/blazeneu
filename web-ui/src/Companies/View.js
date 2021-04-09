@@ -7,6 +7,8 @@ import ViewEntries from '../Entries/View';
 import { get_company } from '../api';
 import EntryNew from '../Entries/New';
 import NotificationNew from '../Notifications/New';
+import DeleteNotification from '../Notifications/Delete';
+import NotificationButton from '../Notifications/Button';
 
 
 function SingleCompany({ companies, session }) {
@@ -37,6 +39,7 @@ function SingleCompany({ companies, session }) {
 		history.go(0);
 	}
 
+	//This is for creating entries, name should probably change
 	function loginNotice() {
 		if (session === null || session === "null") {
 			return (
@@ -63,7 +66,7 @@ function SingleCompany({ companies, session }) {
 			);
 		}
 		else {
-			return (<NotificationNew company={company} session={session}/>);
+			return (<NotificationButton company={company} session={session}/>);
 		}
 	}
 
