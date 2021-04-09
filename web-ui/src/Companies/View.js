@@ -9,6 +9,7 @@ import EntryNew from '../Entries/New';
 import NotificationNew from '../Notifications/New';
 import DeleteNotification from '../Notifications/Delete';
 import NotificationButton from '../Notifications/Button';
+import SuccessGif from './SuccessGif';
 
 
 function SingleCompany({ companies, session }) {
@@ -96,6 +97,9 @@ function SingleCompany({ companies, session }) {
 			<br />
 			{notify()}
 			<ViewEntries company={company} session={session} />
+			
+			<SuccessGif company={company} />
+
 			{/* <ViewComments company={company} session={session} /> */}
 			{/* {comments} */}
 		</Container>
