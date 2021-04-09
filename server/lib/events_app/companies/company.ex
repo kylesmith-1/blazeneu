@@ -10,6 +10,8 @@ defmodule CompanyTest.Companies.Company do
 
     has_many :comments, CompanyTest.Comments.Comment
 
+    has_many :notifications, CompanyTest.Notifications.Notification
+
     timestamps()
   end
 
