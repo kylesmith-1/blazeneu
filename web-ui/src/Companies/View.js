@@ -6,6 +6,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import ViewEntries from '../Entries/View';
 import { get_company } from '../api';
 import EntryNew from '../Entries/New';
+import NotificationNew from '../Notifications/New';
 
 
 function SingleCompany({ companies, session }) {
@@ -51,6 +52,21 @@ function SingleCompany({ companies, session }) {
 		}
 	}
 
+	function notify() {
+		if (session === null || session === "null") {
+			return (
+				<Row>
+					<Col>
+					<h3>Please register or login to sign up for notification.</h3>
+					</Col>
+				</Row>
+			);
+		}
+		else {
+			return (<NotificationNew company={company} session={session}/>);
+		}
+	}
+
 	return (
 		<Container>
 			<br></br>
@@ -74,6 +90,8 @@ function SingleCompany({ companies, session }) {
 			</Row>
 			<br />
 			{loginNotice()}
+			<br />
+			{notify()}
 			<ViewEntries company={company} session={session} />
 			{/* <ViewComments company={company} session={session} /> */}
 			{/* {comments} */}
