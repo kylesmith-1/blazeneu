@@ -35,7 +35,7 @@ const filterCompanies = (companies, query) => {
 
     return companies.filter((company) => {
         const companyName = company.name.toLowerCase();
-        return companyName.includes(query);
+        return companyName.includes(query.toLowerCase());
     });
 };
 

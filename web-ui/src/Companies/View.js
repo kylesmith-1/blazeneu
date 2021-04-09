@@ -6,6 +6,10 @@ import { useLocation, useHistory } from "react-router-dom";
 import ViewEntries from '../Entries/View';
 import { get_company } from '../api';
 import EntryNew from '../Entries/New';
+import NotificationNew from '../Notifications/New';
+import DeleteNotification from '../Notifications/Delete';
+import NotificationButton from '../Notifications/Button';
+import SuccessGif from './SuccessGif';
 
 
 function SingleCompany({ companies, session }) {
@@ -36,6 +40,7 @@ function SingleCompany({ companies, session }) {
 		history.go(0);
 	}
 
+	//This is for creating entries, name should probably change
 	function loginNotice() {
 		if (session === null || session === "null") {
 			return (
@@ -48,6 +53,21 @@ function SingleCompany({ companies, session }) {
 		}
 		else {
 			return (<EntryNew company={company} session={session}/>);
+		}
+	}
+
+	function notify() {
+		if (session === null || session === "null") {
+			return (
+				<Row>
+					<Col>
+					<h3>Please register or login to sign up for notification.</h3>
+					</Col>
+				</Row>
+			);
+		}
+		else {
+			return (<NotificationButton company={company} session={session}/>);
 		}
 	}
 
@@ -74,7 +94,12 @@ function SingleCompany({ companies, session }) {
 			</Row>
 			<br />
 			{loginNotice()}
+			<br />
+			{notify()}
 			<ViewEntries company={company} session={session} />
+			
+			<SuccessGif company={company} />
+
 			{/* <ViewComments company={company} session={session} /> */}
 			{/* {comments} */}
 		</Container>

@@ -16,6 +16,10 @@ function CompanyNew() {
 		location: ""
 	});
 
+	const [manual, setManual] = useState({
+		manual: false
+	});
+
 	function submit(ev) {
 
 		ev.preventDefault();
@@ -32,12 +36,59 @@ function CompanyNew() {
 	}
 
 	function updateLocation() {
-		let address = document.getElementById("jrj").value.toString();
 
-		setCompany({
+		if (!(manual.manual)) {
+			let address = document.getElementById("jrj").value.toString();
+			console.log(address);
+			console.log(company);
+			
+			setCompany({
 			name: company.name,
 			location: address
-		});
+			});
+			console.log(company);
+		}
+	}
+
+	function updateManual() {
+		let manual_made = Object.assign({}, manual);
+		manual_made["manual"] = !(manual.manual);
+		setManual(manual_made);
+	}
+
+	function manualButton() {
+		if (manual.manual) {
+			return (
+				<Button onClick={() => updateManual()}>
+					Google Maps Location Entry
+				</Button>);
+		}
+		else {
+			return (
+				<Button
+					onClick={() => updateManual()}>
+					Manual Location Entry
+				</Button>);
+		}
+	}
+
+	function returnLocationEntry() {
+		if (manual.manual) {
+			return (
+				<Form.Group>
+					<Form.Label>Manually Entered Address</Form.Label>
+					<Form.Control type="text"
+						onChange={(ev) => updateBody("location", ev)}
+						value={company.location || ""} />
+				</Form.Group>
+			);
+		}
+		else {
+			return (
+			<Form.Group>
+				<Home />
+			</Form.Group>);	
+		}
 	}
 
 	return (
@@ -46,15 +97,21 @@ function CompanyNew() {
 				<h1>New Company</h1>
 				<Form onSubmit={submit}>
 					<Form.Group>
-						<Form.Label>Company Title</Form.Label>
+						<Form.Label>Company Name</Form.Label>
 						<Form.Control type="text"
 							onChange={(ev) => updateBody("name", ev)}
 							value={company.name || ""} />
 					</Form.Group>
-					<Form.Group>
+
 						<Home />
-					</Form.Group>
+					</Form.Group> */}
+					{returnLocationEntry()}
 					<br />
+					<br />
+					{manualButton()}
+					<br />
+					<br />
+
 					<Button variant="success"
 						onClick={updateLocation} type="submit">
 						Create

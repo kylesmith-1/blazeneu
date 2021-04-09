@@ -148,6 +148,34 @@ export async function create_entry(entry) {
 	return abstract_opts("/entries", opts);
 }
 
+export async function create_notification(notification) {
+	let state = store.getState();
+	let token = state?.session?.token;
+	let opts = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'x-auth': token
+		},
+		body: JSON.stringify({ "notification": notification })
+	};
+	return abstract_opts("/notifications", opts);
+}
+
+export async function delete_notification(id) {
+	let opts = {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ "id": id })
+	};
+
+	await fetch(
+		"http://localhost:4000/api/v1" + "/notifications/" + id, opts);
+	fetch_companies();
+}
+
 export async function delete_comment(id) {
 	let opts = {
 		method: 'DELETE',
