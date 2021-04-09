@@ -162,6 +162,20 @@ export async function create_notification(notification) {
 	return abstract_opts("/notifications", opts);
 }
 
+export async function delete_notification(id) {
+	let opts = {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ "id": id })
+	};
+
+	await fetch(
+		"http://localhost:4000/api/v1" + "/notifications/" + id, opts);
+	fetch_companies();
+}
+
 export async function delete_comment(id) {
 	let opts = {
 		method: 'DELETE',
