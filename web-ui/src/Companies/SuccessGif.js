@@ -3,6 +3,7 @@ import snoop from './Gifs/snoop_dogg.gif';
 import justin from './Gifs/justin_timberlake.gif';
 import ted from './Gifs/ted.gif';
 import elon from './Gifs/elon.gif';
+import that_70s from './Gifs/that_70s.gif';
 
 function display_gif({company}) {
     let b = true;
@@ -20,7 +21,7 @@ function display_gif({company}) {
     }
 
     function select_random_gif() {
-        let num = genRandomNumber(0, 4);
+        let num = genRandomNumber(0, 5);
         if (num === 0) {
             return (<img src={snoop} alt="" />);
         }
@@ -29,6 +30,9 @@ function display_gif({company}) {
         }
         else if (num === 2) {
             return (<img src={elon} alt="" />);
+        }
+        else if (num === 3) {
+            return (<img src={that_70s} alt="" />);
         }
         else {
             return(<img src={justin} alt="" />);
