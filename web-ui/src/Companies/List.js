@@ -1,23 +1,23 @@
-import { Row, Container, Button, Card } from 'react-bootstrap';
+import { Row, Container, Button, Card, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => (
-    <form action="/" method="get">
-        <label htmlFor="header-search">
-            <span className="visually-hidden">Search blog posts</span>
-        </label>
-        <input
+    <Form action="/" method="get">
+        <Form.Label htmlFor="header-search">
+            <span className="visually-hidden">Search companies</span>
+        </Form.Label>
+        <Form.Control
             value={searchQuery}
             onInput={e => setSearchQuery(e.target.value)}
             type="text"
             id="header-search"
-            placeholder="Search blog posts"
+            placeholder="Search for a company"
             name="s"
         />
-        <button type="submit">Search</button>
-    </form>
+        <Button type="submit">Search</Button>
+    </Form>
 );
 
 const filterCompanies = (companies, query) => {

@@ -3,12 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import "./App.scss";
 import Nav from './Nav';
-import List from './Events/List';
-import CompanyNew from './Events/New';
+import List from './Companies/List';
+import CompanyNew from './Companies/New';
 import EntryNew from './Entries/New';
 import Demo2 from './Entries/Button';
-import EditCompany from './Events/Edit';
-import SingleCompany from './Events/View';
+import EditCompany from './Companies/Edit';
+import SingleCompany from './Companies/View';
 import ViewEntry from './Entries/View';
 import UsersNew from './Users/New';
 import EditUser from './Users/Edit';
