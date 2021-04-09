@@ -27,7 +27,6 @@ defmodule CompanyTestWeb.CompanyController do
 
   def update(conn, %{"id" => id, "company" => company_params}) do
     company = Companies.get_company!(id)
-
     with {:ok, %Company{} = company} <- Companies.update_company(company, company_params) do
       render(conn, "show.json", company: company)
     end

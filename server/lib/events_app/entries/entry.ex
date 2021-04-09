@@ -5,6 +5,7 @@ defmodule CompanyTest.Entries.Entry do
   schema "entries" do
     field :additional_notes, :string
     field :continuous_drug_testing, :boolean, default: false
+    field :coop_cycle, :string
     field :drug_test, :boolean, default: false
     field :verified, :boolean, default: false
 
@@ -17,7 +18,7 @@ defmodule CompanyTest.Entries.Entry do
   @doc false
   def changeset(entry, attrs) do
     entry
-    |> cast(attrs, [:drug_test, :continuous_drug_testing, :additional_notes, :verified, :company_id, :user_id])
+    |> cast(attrs, [:drug_test, :coop_cycle, :continuous_drug_testing, :additional_notes, :verified, :company_id, :user_id])
     |> validate_required([:drug_test, :verified, :company_id, :user_id])
   end
 end

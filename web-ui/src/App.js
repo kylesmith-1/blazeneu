@@ -3,13 +3,17 @@ import { Switch, Route } from 'react-router-dom';
 
 import "./App.scss";
 import Nav from './Nav';
-import List from './Events/List';
-import EventsNew from './Events/New';
-import EditEvent from './Events/Edit';
-import SingleEvent from './Events/View';
+import List from './Companies/List';
+import CompanyNew from './Companies/New';
+import EntryNew from './Entries/New';
+import Demo2 from './Entries/Button';
+import EditCompany from './Companies/Edit';
+import SingleCompany from './Companies/View';
+import ViewEntry from './Entries/View';
 import UsersNew from './Users/New';
 import EditUser from './Users/Edit';
 import SingleUser from './Users/View';
+
 
 
 function App() {
@@ -24,20 +28,29 @@ function App() {
         <Route path="/signup" exact>
           <UsersNew />
         </Route>
-        <Route path="/event/new" exact>
-          <EventsNew />
+        <Route path="/company/new" exact>
+          <CompanyNew />
         </Route>
-        <Route path="/event/view/">
-          <SingleEvent />
+        <Route path="/company/view/">
+          <SingleCompany />
         </Route>
-        <Route path="/event/edit/">
-          <EditEvent />
+        <Route path="/company/edit/">
+          <EditCompany />
         </Route>
         <Route path="/user/view" exact>
           <SingleUser />
         </Route>
         <Route path="/user/edit" exact>
           <EditUser />
+        </Route>
+        <Route path="/entry/new" exact>
+          <EntryNew company={1} user={1} />
+        </Route>
+        <Route path="/entry/button" exact>
+          <Demo2 />
+        </Route>
+        <Route path="/entry/view/">
+          <ViewEntry />
         </Route>
       </Switch>
     </Container>

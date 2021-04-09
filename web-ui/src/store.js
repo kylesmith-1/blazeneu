@@ -22,9 +22,9 @@ function load_users() {
     return JSON.parse(users);
 }
 
-function events(state = load_events(), action) {
-    if (action.type === 'events/set') {
-        save_events(action.data);
+function companies(state = load_companies(), action) {
+    if (action.type === 'companies/set') {
+        save_companies(action.data);
         return action.data;
     } else {
         if (state == null) {
@@ -35,13 +35,13 @@ function events(state = load_events(), action) {
     }
 }
 
-function save_events(events) {
-    localStorage.setItem("events", JSON.stringify(events));
+function save_companies(companies) {
+    localStorage.setItem("companies", JSON.stringify(companies));
 }
 
-function load_events() {
-    let events = localStorage.getItem("events");
-    return JSON.parse(events);
+function load_companies() {
+    let companies = localStorage.getItem("companies");
+    return JSON.parse(companies);
 }
 
 function save_session(sess) {
@@ -94,7 +94,7 @@ function error(state = null, action) {
 
 function root_reducer(state, action) {
     let redu = combineReducers(
-        {users,events,session,error
+        {users,companies,session,error
     });
 
     let state1 = redu(state, action);

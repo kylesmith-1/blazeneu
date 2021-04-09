@@ -108,7 +108,7 @@ function AppNav({ error }) {
         <Container className="nav-bar">
             <Row>
                 <Button className="home-btn" variant="primary">
-                    <Link to="/">Upcoming Events List</Link>
+                    <Link to="/">All Companies</Link>
                 </Button>
                 <Col>
                     <LoginOrInfo />
