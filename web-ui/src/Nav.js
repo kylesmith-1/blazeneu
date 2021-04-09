@@ -1,4 +1,4 @@
-import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+import { Container, Nav, Row, Col, Form, Button, Alert, Modal } from 'react-bootstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useState } from 'react';
@@ -6,16 +6,22 @@ import { useState } from 'react';
 import { api_login } from './api';
 import store from './store';
 
+import { ReactComponent as Hands } from './assets/shakinghands.svg';
+
 function LoginForm() {
     const location = useLocation();
     let history = useHistory();
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     function submit(ev) {
         ev.preventDefault();
         api_login(email, pass);
-        // so user signup disappears after signing up for an account, and any time someone revisits signup screen on login
         if (location.pathname.includes("signup")) {
             history.push("/");
         }
@@ -23,23 +29,39 @@ function LoginForm() {
 
     return (
         <Container>
-            <Row>
-                <Col>
-                    <Form onSubmit={submit} inline>
-                        Email:
-			<Form.Control name="email"
-                            type="text"
-                            onChange={(ev) => setEmail(ev.target.value)}
-                            value={email} />
-			Password:
-			<Form.Control name="password"
-                            type="password"
-                            onChange={(ev) => setPass(ev.target.value)}
-                            value={pass} />
-                        <Button variant="secondary" type="submit">Login</Button>
-                    </Form>
-                </Col>
-            </Row>
+                    <Link onClick={handleShow}>
+                        LOGIN
+                    </Link>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Welcome Back!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form onSubmit={submit} inline>
+                                <Form.Group>
+                                    <Form.Label> Email:
+                                </Form.Label>
+                                    <Form.Control name="email"
+                                        type="text"
+                                        onChange={(ev) => setEmail(ev.target.value)}
+                                        value={email} />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>
+                                        Pswd:
+                                    </Form.Label>
+                                    <Form.Control name="password"
+                                        type="password"
+                                        onChange={(ev) => setPass(ev.target.value)}
+                                        value={pass} />
+                                </Form.Group>
+                                <div className="modal-btns">
+                                <Button variant="primary" onClick={handleClose} type="submit">Login</Button>
+                                <Button variant="danger" onClick={handleClose}>Cancel</Button>
+                                </div>
+                            </Form>
+                        </Modal.Body>
+                    </Modal>
         </Container>
     );
 }
@@ -52,17 +74,13 @@ function SessionInfo({ session }) {
     }
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    Username:
-                    <Link to="/user/view">{session.name}</Link> |
-                    Email:
-                    {session.email} |
-                    <Button onClick={logout}> Logout</Button>
-                </Col>
-            </Row>
-        </Container>
+        <div className="logged-in">
+                   <p className="welcome-txt"> Welcome back,</p>
+                    <Link to="/user/view">{session.name}</Link> 
+                    {/* Email:
+                    {session.email} | */}
+                    <Button className="logout-btn" variant="link" onClick={logout}> LOGOUT</Button>
+        </div>
     );
 }
 
@@ -79,10 +97,8 @@ const LoginOrInfo = connect(
 
 function CheckForSignUp({ session }) {
     if (!session) {
-        return (
-            <Button variant="success">
-                <Link to="/signup">Sign Up</Link>
-            </Button>
+        return (   
+                <Link to="/signup">SIGN UP</Link>
         );
     } else {
         return (null);
@@ -105,16 +121,21 @@ function AppNav({ error }) {
     }
 
     return (
-        <Container className="nav-bar">
-            <Row>
-                <Button className="home-btn" variant="primary">
-                    <Link to="/">All Companies</Link>
+        <Container>
+            <Nav>
+            <Nav.Item>
+                <Button className="home-logo" variant="link" href="/">
+                    <span className="blaze">BLAZE</span> <span className="neu">NEU</span>
+                    <span className="hands"><Hands /></span>
                 </Button>
-                <Col>
-                    <LoginOrInfo />
-                </Col>
-                <Signup />
-            </Row>
+                </Nav.Item>
+                <Nav.Item className="log-in">
+                <LoginOrInfo /> 
+                </Nav.Item>
+                <Nav.Item className="sign-up">
+               <Signup />
+               </Nav.Item>
+        </Nav>
             {error_msg}
         </Container>
     );

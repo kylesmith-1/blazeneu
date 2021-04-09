@@ -1,4 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Odibee+Sans&display=swap');
+
+.blaze {
+  font-family: 'Odibee Sans', cursive;
+  color: #FD8369;
+}
+
+* {
+  font-family: 'Archivo', sans-serif;
+}
+
+
+a {
+  font-weight: 500;
+  color: #898989 !important;
+  font-size: 16px;
+}
+
+.neu {
+  font-family: 'Odibee Sans', cursive;
+  margin-left: -0.15em;
+}
+
+.hands {
+  margin-left: .2em;
+}
+
+.home-logo {
+  font-family: 'Odibee Sans', cursive;
+  font-size: 48px !important;
+  color: black !important;
+  margin-left: 75px;
+}
+
+/* .btn-primary {
+  background-color: #FD8369 !important;
+} */
+
+.btn-link:hover  {
+  text-decoration: none !important;
+}
+
+.btn-link:focus, .btn-link.focus {
+  text-decoration: none !important;
+  box-shadow:none !important;
+}
+
+
+.modal-content {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.form-control {
+  margin-top: 10px;
+}
+
+.modal-btns {
+  margin-top: 30px !important;
+  margin-left: 250px !important;
+}
+
+
+
 body {
+  padding-top: 88px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -45,8 +114,8 @@ code {
 }
 
 .form-control {
-  margin-left: 5px;
-  margin-right: 10px;
+  /* margin-left: 5px;
+  margin-right: 10px; */
 }
 
 .card {
@@ -83,28 +152,147 @@ h3 {
   border-radius: 7px;
 }
 
-.nav-bar {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.nav {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  z-index: 9999;
 }
 
-.going {
-  color: green;
+.log-in {
+  margin-left: 700px;
+  display: flex;
+  align-self: center;
 }
 
-.interested {
-  color: orange;
+.sign-up {
+  display: flex;
+  margin-right: 150px;
+  align-self: center;
+
 }
 
-.cant-go {
-  color: red;
+.logged-in {
+  display:flex;
+  align-items:center;
+  margin-right: 75px;
 }
 
-.no-response {
-  color: lightslategray;
+p, .welcome-txt {
+  margin-right: .3em;
+  margin-bottom: 0;
 }
 
-.event-btn-container {
-display: flex;
-flex-direction: column;
+.logout-btn {
+  font-weight: 500 !important;
+  color: #df4759 !important;
+  font-size: 16px;
+}
+
+.splash {
+  display:flex;
+ justify-content: space-evenly;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 1vw;
+  background-color: #F6F3F0;
+  margin-bottom: 25px;
+  padding-bottom: 75px;
+}
+
+.text-content {
+  align-items: flex-start;
+  text-align: left;
+  margin-top: 60px;
+}
+
+.splash-title {
+text-align: left;
+font-weight: 700;
+font-size: 48px;
+margin-bottom: 25px !important;
+}
+
+.splash-text {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
+
+body {
+    background-color: #E7E9F5;
+    font-family: 'Heebo', sans-serif
+}
+
+.card {
+    width: 500px;
+    border: none;
+    border-radius: 20px
+}
+
+.form-control {
+    border-radius: 7px !important;
+    border: 1.5px solid #E3E6ED;
+    letter-spacing: 1px !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+    width: 50vw !important;
+}
+
+input.form-control:focus {
+    box-shadow: none;
+    border: 1.5px solid #E3E6ED;
+    background-color: #F7F8FD;
+    letter-spacing: 1px
+}
+
+.btn-primary {
+    background-color: #5878FF !important;
+    border-radius: 7px;
+    height: calc(1.5em + 0.75rem + 2px);
+    margin-left: 0 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    margin-left: -2em !important;
+}
+
+.btn-primary:focus {
+    box-shadow: none
+}
+
+.flex-row {
+    border: 1px solid #F2F2F4;
+    border-radius: 10px;
+    margin: 0 1px 0
+}
+
+.flex-column p {
+    font-size: 14px
+}
+
+span.mb-2 {
+    font-size: 12px;
+    color: #8896BD
+}
+
+h5 span {
+    color: #869099
 }

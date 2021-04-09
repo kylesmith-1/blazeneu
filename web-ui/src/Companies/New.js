@@ -17,7 +17,7 @@ function CompanyNew() {
 	});
 
 	function submit(ev) {
-		
+
 		ev.preventDefault();
 		create_company(company).then(() => {
 			history.push("/");
@@ -33,14 +33,11 @@ function CompanyNew() {
 
 	function updateLocation() {
 		let address = document.getElementById("jrj").value.toString();
-		console.log(address);
-		console.log(company);
-		
+
 		setCompany({
-		name: company.name,
-		location: address
+			name: company.name,
+			location: address
 		});
-		console.log(company);
 	}
 
 	return (
@@ -54,11 +51,6 @@ function CompanyNew() {
 							onChange={(ev) => updateBody("name", ev)}
 							value={company.name || ""} />
 					</Form.Group>
-					{/* <Form.Group>
-						<Form.Label>Location</Form.Label>
-						<Form.Control id="loc" onChange={(ev) => updateBody("location", ev)}
-							value={company.location || ""} />
-					</Form.Group> */}
 					<Form.Group>
 						<Home />
 					</Form.Group>

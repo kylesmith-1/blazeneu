@@ -3,20 +3,28 @@ import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { useState } from 'react';
 
+import { ReactComponent as Working } from '../assets/working.svg';
+import { ReactComponent as MagnifyingGlass } from '../assets/magnifyingglass.svg';
+
+
+
+
 const SearchBar = ({ searchQuery, setSearchQuery }) => (
+
     <Form action="/" method="get">
-        <Form.Label htmlFor="header-search">
-            <span className="visually-hidden">Search companies</span>
-        </Form.Label>
-        <Form.Control
-            value={searchQuery}
-            onInput={e => setSearchQuery(e.target.value)}
-            type="text"
-            id="header-search"
-            placeholder="Search for a company"
-            name="s"
-        />
-        <Button type="submit">Search</Button>
+        <div class="container d-flex justify-content-center">
+            <Form.Control
+                value={searchQuery}
+                onInput={e => setSearchQuery(e.target.value)}
+                type="text"
+                id="header-search"
+                placeholder="Search for a company"
+                name="s"
+            />
+            <div class="input-group-append">
+                <Button class="btn btn-primary" type="submit"><MagnifyingGlass /></Button>
+            </div>
+        </div>
     </Form>
 );
 
@@ -38,7 +46,7 @@ function Company({ company, session }) {
     let history = useHistory();
 
 
-    // access levels for users 
+    // access levels for users
     // if (company.user.id === session.user_id) {
     edit = (
         <Button variant="info" onClick={edit_Company}>Edit Company Info</Button>
@@ -116,6 +124,14 @@ function List({ companies, session }) {
 
     return (
         <Container>
+            <div className="splash">
+                <div className="text-content">
+                    <h1 className="splash-title">Success, <br></br> not drug tests</h1>
+                    <p className="splash-text">We want you to be as prepared as possible. <br></br>
+                Know what to expect, <em>before</em> you get to the interview.</p>
+                </div>
+                <Working />
+            </div>
             <div >
                 <SearchBar searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery} />
