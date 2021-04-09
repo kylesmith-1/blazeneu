@@ -17,19 +17,6 @@ function CompanyNew() {
 	});
 
 	function submit(ev) {
-
-		let address = document.getElementById("jrj").value.toString();
-		console.log(address);
-		console.log(company);
-
-		// let company_made2 = Object.assign({}, company);
-		// company_made2["location"] = address;
-		// setCompany(company_made2);		
-		setCompany({
-		name: company.name,
-		location: address
-		});
-		console.log(company);
 		
 		ev.preventDefault();
 		create_company(company).then(() => {
@@ -44,6 +31,17 @@ function CompanyNew() {
 		setCompany(company_made);
 	}
 
+	function updateLocation() {
+		let address = document.getElementById("jrj").value.toString();
+		console.log(address);
+		console.log(company);
+		
+		setCompany({
+		name: company.name,
+		location: address
+		});
+		console.log(company);
+	}
 
 	return (
 		<Row>
@@ -66,7 +64,7 @@ function CompanyNew() {
 					</Form.Group>
 					<br />
 					<Button variant="success"
-						type="submit">
+						onClick={updateLocation} type="submit">
 						Create
 						</Button>
 				</Form>
