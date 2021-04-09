@@ -1,4 +1,5 @@
 defmodule CompanyTest.Notifications do
+  require Logger
   @moduledoc """
   The Notifications context.
   """
@@ -7,6 +8,9 @@ defmodule CompanyTest.Notifications do
   alias CompanyTest.Repo
 
   alias CompanyTest.Notifications.Notification
+
+  alias CompanyTest.Users
+  alias CompanyTest.Companies
 
   @doc """
   Returns the list of notifications.
@@ -100,5 +104,29 @@ defmodule CompanyTest.Notifications do
   """
   def change_notification(%Notification{} = notification, attrs \\ %{}) do
     Notification.changeset(notification, attrs)
+  end
+
+# Try curl with auth key
+# then implement that here, should be able to find company!
+
+
+  def send_emails(comp_id) do
+    Logger.debug "Notifs this is the id #{inspect(comp_id)}"
+    allNotifs = list_notifications()
+    Logger.debug "All notifs: #{inspect(allNotifs)}"
+    oneNotif = get_notification!(1).user_id
+    Logger.debug "First notif user_id: #{inspect(oneNotif)}"
+    Logger.debug "Type dealt with: #{inspect(IEx.Info.info(allNotifs))}"
+    for notif <- allNotifs do
+      usr = Users.get_user!(notif.user_id)
+      cmpny = Companies.get_company!(notif.company_id)
+      if (cmpny.id == comp_id) do
+        email = usr.email
+        company_name = cmpny.name
+        
+      end
+      
+      Logger.debug "Iterated email: #{inspect(email)}"
+    end
   end
 end
