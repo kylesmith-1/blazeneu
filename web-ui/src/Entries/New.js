@@ -90,6 +90,7 @@ function CreateEntry({company, session}) {
 			Fall
 			</label>
 			<select class="form-control" id="exampleFormControlSelect1" onChange={updateCoopYear}>
+				<option>Select Year</option>
 				<option>2021</option>
 				<option>2020</option>
 				<option>2019</option>
