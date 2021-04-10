@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ReactComponent as Working } from '../assets/working.svg';
 import { ReactComponent as MagnifyingGlass } from '../assets/magnifyingglass.svg';
 
-
+import Sock from '../socket';
 
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => (
@@ -148,6 +148,7 @@ function List({ companies, session }) {
             </div>
             <CompanyView session={session} />
             <CreateCompany session={session} />
+            <Sock />
         </Container>
     );
 }
