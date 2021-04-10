@@ -106,17 +106,19 @@ export async function edit_company(id, company) {
 	return abstract_opts("/companies/" + id, opts);
 }
 
-export async function delete_company(id) {
+export async function delete_company(company) {
+	company.entries.map((entry) => delete_entry(entry.id));
+	company.notifications.map((notif) => delete_notification(notif.id));
 	let opts = {
 		method: 'DELETE',
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify({ "id": id })
+		body: JSON.stringify({ "id": company.id })
 	};
 
 	await fetch(
-		"http://localhost:4000/api/v1" + "/companies/" + id, opts);
+		"http://localhost:4000/api/v1" + "/companies/" + company.id, opts);
 	fetch_companies();
 }
 
@@ -146,6 +148,20 @@ export async function create_entry(entry) {
 		body: JSON.stringify({ "entry": entry })
 	};
 	return abstract_opts("/entries", opts);
+}
+
+export async function delete_entry(id) {
+	let opts = {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ "id": id })
+	};
+
+	await fetch(
+		"http://localhost:4000/api/v1" + "/entries/" + id, opts);
+	fetch_companies();
 }
 
 export async function create_notification(notification) {

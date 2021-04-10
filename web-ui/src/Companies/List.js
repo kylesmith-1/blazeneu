@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 import { ReactComponent as Working } from '../assets/working.svg';
 import { ReactComponent as MagnifyingGlass } from '../assets/magnifyingglass.svg';
+import { delete_company } from '../api';
 
 import { ch_join } from '../socket';
 
@@ -45,6 +46,7 @@ function Company({ company, session }) {
     // let deleteCompany = null;
     let edit = null;
     let show = null;
+    let deleteComp = null;
     let history = useHistory();
 
 
@@ -53,10 +55,9 @@ function Company({ company, session }) {
     edit = (
         <Button variant="primary-outline" onClick={edit_Company}>Edit Company Info</Button>
     );
-    // deleteCompany = (
-    //     <Button variant="danger" onClick={() => delete_Company(company.id)}>Delete Company</Button>
-    // );
-    // }
+    deleteComp = (
+        <Button variant="primary-outline" onClick={() => delete_company(company)}>Delete Company</Button>
+    );
 
     function showCompany() {
         history.push("/company/view/" + company.id);
@@ -77,16 +78,13 @@ function Company({ company, session }) {
             <Card.Body>
                 <Card.Title>{company.name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{company.location}</Card.Subtitle>
-                {/* <Card.Text>
-     <p> bleeeeeep bloop blop</p>
-                </Card.Text> */}
                 <br></br>
                 <div className="event-btn-container">
                     {show}
                     <br></br>
                     {edit}
                     <br></br>
-                    {/* {deleteCompany} */}
+                    {deleteComp}
                 </div>
             </Card.Body>
         </Card>
