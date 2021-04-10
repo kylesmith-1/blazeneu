@@ -9,6 +9,11 @@
   color: #FD8369;
 }
 
+.blazeNumber {
+  font-weight: bold;
+  color: #FD8369;
+}
+
 * {
   font-family: 'Archivo', sans-serif;
 }

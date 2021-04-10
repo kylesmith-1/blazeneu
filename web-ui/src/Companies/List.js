@@ -1,12 +1,12 @@
 import { Row, Container, Button, Card, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ReactComponent as Working } from '../assets/working.svg';
 import { ReactComponent as MagnifyingGlass } from '../assets/magnifyingglass.svg';
 
-
+import { ch_join } from '../socket';
 
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => (
@@ -101,6 +101,12 @@ function List({ companies, session }) {
     const [searchQuery, setSearchQuery] = useState(query || '');
     const filteredCompanies = filterCompanies(companies, searchQuery);
 
+    const [state, setState] = useState({
+        numEntries: 0,
+    });
+
+    useEffect(() => ch_join(setState));
+
     let cards = filteredCompanies.map((company) => (
         <Company company={company} session={session} key={company.id} />
     ));
@@ -139,6 +145,7 @@ function List({ companies, session }) {
                     <h2 className="splash-title">Success, <br></br> not drug tests</h2>
                     <p className="splash-text">We want you to be as prepared as possible. <br></br>
                 Know what to expect, <em>before</em> you get to the interview.</p>
+                <p className="splash-text"><br/> <span className="blazeNumber">{state.numEntries}</span> student contributions and counting.</p>
                 </div>
                 <Working />
             </div>
