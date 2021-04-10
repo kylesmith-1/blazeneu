@@ -117,7 +117,7 @@ defmodule CompanyTest.Notifications do
       if (cmpny.id == comp_id) do
         email = usr.email
         company_name = cmpny.name
-        str_message = "Hello! There is new drug test data posted for " <> company_name <> ". Check it out over at http://localhost:3000/company/view/" <> to_string(cmpny.id)
+        str_message = "Hello! There is new drug test data posted for " <> company_name <> ". Check it out over at http://blazeneu.com/company/view/" <> to_string(cmpny.id)
         SendEmail.send("blazeneu@gmail.com", email, "Updates on BlazeNEU!", str_message)
       end
     end

@@ -110,7 +110,6 @@ function CompanyNew() {
 					</Form.Group>
 
 					{manualButton()}
-
 					<br />
 					<br />
 					{returnLocationEntry()}
@@ -121,7 +120,7 @@ function CompanyNew() {
 					<Button variant="info"
 						onClick={updateLocation} type="submit">
 						Create
-						</Button>
+					</Button>
 				</Form>
 			</Col>
 		</Row>
