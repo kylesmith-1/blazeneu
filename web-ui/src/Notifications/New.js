@@ -26,8 +26,9 @@ function CreateNotification({company, session}) {
 	return (
 		<Row>
 			<Col>
+				<h2>Email Notifications for this Company</h2>
 				<Form onSubmit={submit}>
-					<Button variant="primary" type="submit">Sign me up for notifications!</Button>
+					<Button variant="primary" type="submit">Sign me up!</Button>
 				</Form>
 			</Col>
 		</Row>

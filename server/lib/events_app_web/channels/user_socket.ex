@@ -3,7 +3,7 @@ defmodule CompanyTestWeb.UserSocket do
 
   ## Channels
   # channel "room:*", CompanyTestWeb.RoomChannel
-   channel "example", CompanyTestWeb.ExampleChannel
+   channel "num_entries", CompanyTestWeb.NumEntriesChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
