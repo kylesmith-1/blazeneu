@@ -1,4 +1,5 @@
 import { Row, Col, Container, Button } from 'react-bootstrap';
+import { delete_entry } from '../api';
 
 import React from 'react';
 
@@ -48,7 +49,6 @@ function renderContinuous() {
 	}
 }
 
-
 return (
 	<Container className="company-details">
 		<Row>
@@ -60,6 +60,9 @@ return (
 				<br></br>
 				{additional_notes()}
 				<br />
+			</Col>
+			<Col>
+				<Button variant="primary-outline" onClick={() => delete_entry(entry.id)}>Delete Entry</Button>
 			</Col>
 		</Row>
 	</Container>
