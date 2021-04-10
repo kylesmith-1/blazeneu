@@ -1,6 +1,7 @@
 defmodule CompanyTest.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
+  require Logger
 
   schema "users" do
     field :name, :string

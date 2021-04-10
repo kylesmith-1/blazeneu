@@ -91,11 +91,11 @@ function SingleCompany({ companies, session }) {
 						<p className="company-info"><b>Company Name:</b> {company.name} </p>
 						<p className="company-info"><b>Company Location:</b> {company.location} </p>
 						</div>
-						<Row>
+						{/* <Row>
 							<Col>
 								{editbtn}
 							</Col>
-						</Row>
+						</Row> */}
 					</div>
 				</Col>
 			</Row>

@@ -13,6 +13,7 @@ defmodule CompanyTestWeb.SessionController do
         user_id: user.id,
         name: user.name,
         email: user.email,
+        admin: user.admin,
         token: Phoenix.Token.sign(conn, "user_id", user.id)
       }
 

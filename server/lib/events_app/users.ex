@@ -77,9 +77,15 @@ defmodule CompanyTest.Users do
 
   """
   def create_user(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert()
+    if (attrs["email"] === "smith.kyle1@northeastern.edu" || attrs["email"] === "johnson.re@northeastern.edu" || attrs["email"] === "cardin.j@northeastern.edu") do
+      %User{admin: true}
+      |> User.changeset(attrs)
+      |> Repo.insert()
+    else
+      %User{}
+      |> User.changeset(attrs)
+      |> Repo.insert()
+    end
   end
 
   @doc """

@@ -227,6 +227,13 @@ p, .welcome-txt {
   margin-bottom: 0;
 }
 
+.admin-txt {
+  margin-right: .3em;
+  margin-left: .3em;
+  margin-bottom: 0;
+  color: #69FD83;
+}
+
 .logout-btn {
   font-weight: 500 !important;
   color: #df4759 !important;
