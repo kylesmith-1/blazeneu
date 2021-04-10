@@ -45,7 +45,7 @@ function EditCompany({companies, session }) {
 							<Form.Control type="text" onChange={(ev) => updateBody("location", ev)}
 								value={company.location || ""} />
 						</Form.Group>
-						<Button variant="success"
+						<Button variant="secondary"
 							type="submit">
 							Save Company
 						</Button>

@@ -57,7 +57,7 @@ function LoginForm() {
                                 </Form.Group>
                                 <div className="modal-btns">
                                 <Button variant="primary" onClick={handleClose} type="submit">Login</Button>
-                                <Button variant="danger" onClick={handleClose}>Cancel</Button>
+                                <Button variant="secondary" onClick={handleClose}>Cancel</Button>
                                 </div>
                             </Form>
                         </Modal.Body>

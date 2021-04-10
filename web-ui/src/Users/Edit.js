@@ -91,16 +91,13 @@ function EditUser({ users, session }) {
                         </Form.Group>
                         <br />
                         <Row>
+                            <Col className="align-user-buttons">
                         <Button variant="primary"
                             type="submit">
                             Save
 						</Button>
-                        </Row>
-                        <br></br>
-                        <Row>
-                        <Button className="home-btn" variant="secondary">
-                    <Link to="/user/view">Back</Link>
-                </Button>
+                        <Link className="push-left" to="/user/view">Back</Link>
+                        </Col>
                         </Row>
                     </Form>
                 </Col>

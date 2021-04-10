@@ -11,21 +11,23 @@ import { ReactComponent as MagnifyingGlass } from '../assets/magnifyingglass.svg
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => (
 
-    <Form action="/" method="get">
-        <div class="container d-flex justify-content-center">
-            <Form.Control
-                value={searchQuery}
-                onInput={e => setSearchQuery(e.target.value)}
-                type="text"
-                id="header-search"
-                placeholder="Search for a company"
-                name="s"
-            />
-            <div class="input-group-append">
-                <Button class="btn btn-primary" type="submit"><MagnifyingGlass /></Button>
+    <div className="search-bar">
+        <Form action="/" method="get">
+            <div class="container d-flex justify-content-flex-start">
+                <Form.Control
+                    value={searchQuery}
+                    onInput={e => setSearchQuery(e.target.value)}
+                    type="text"
+                    id="header-search"
+                    placeholder="Search for a company"
+                    name="s"
+                />
+                <div class="input-group-append">
+                    <Button className="btn btn-dark" type="submit"><MagnifyingGlass /></Button>
+                </div>
             </div>
-        </div>
     </Form>
+    </div>
 );
 
 const filterCompanies = (companies, query) => {
@@ -49,7 +51,7 @@ function Company({ company, session }) {
     // access levels for users
     // if (company.user.id === session.user_id) {
     edit = (
-        <Button variant="info" onClick={edit_Company}>Edit Company Info</Button>
+        <Button variant="primary-outline" onClick={edit_Company}>Edit Company Info</Button>
     );
     // deleteCompany = (
     //     <Button variant="danger" onClick={() => delete_Company(company.id)}>Delete Company</Button>
@@ -66,7 +68,7 @@ function Company({ company, session }) {
     }
 
     show = (
-        <Button className="show-btn" variant="primary" onClick={showCompany}> Show</Button>
+        <Button className="show-btn" variant="secondary" onClick={showCompany}> Show</Button>
     );
 
 
@@ -111,10 +113,15 @@ function List({ companies, session }) {
     function CreateCompany({ session }) {
         if (session) {
             return (
-                <div class="container d-flex justify-content-center">
-                    <p>Didn’t find what you’re looking for? Add a company!</p>
-                <Button className="create-event"  onClick={() => newCompanyRoute()}>Add a new company</Button>
+                <div className="create-company">
+                    <div class="container d-flex justify-content-center">
+                        <p className="create-company-text">Didn’t find what you’re looking for? Add a company!</p>
+                    </div>
+                    <div class="container d-flex justify-content-center">
+                        <Button className="create-company" variant="info" onClick={() => newCompanyRoute()}>Add a new company</Button>
+                    </div>
                 </div>
+
             );
         } else {
             return null;
@@ -126,10 +133,10 @@ function List({ companies, session }) {
     }
 
     return (
-        <Container>
+        <Container className="margin-bottom">
             <div className="splash">
                 <div className="text-content">
-                    <h1 className="splash-title">Success, <br></br> not drug tests</h1>
+                    <h2 className="splash-title">Success, <br></br> not drug tests</h2>
                     <p className="splash-text">We want you to be as prepared as possible. <br></br>
                 Know what to expect, <em>before</em> you get to the interview.</p>
                 </div>
@@ -139,7 +146,6 @@ function List({ companies, session }) {
                 <SearchBar searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery} />
             </div>
-            <h1>Companies</h1>
             <CompanyView session={session} />
             <CreateCompany session={session} />
         </Container>
