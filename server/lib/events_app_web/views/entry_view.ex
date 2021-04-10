@@ -16,6 +16,7 @@ defmodule CompanyTestWeb.EntryView do
       continuous_drug_testing: entry.continuous_drug_testing,
       coop_cycle: entry.coop_cycle,
       additional_notes: entry.additional_notes,
-      verified: entry.verified}
+      verified: entry.verified,
+      user_id: entry.user_id}
   end
 end

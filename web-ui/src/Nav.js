@@ -73,12 +73,19 @@ function SessionInfo({ session }) {
         store.dispatch({ type: 'session/clear' });
     }
 
+    function admin() {
+        if (session.admin === "true" || session.admin === true) {
+            return(<p className="admin-txt">(Admin)</p>);
+        }
+    }
+
     return (
         <div className="logged-in">
                    <p className="welcome-txt"> Welcome back,</p>
                     <Link to="/user/view">{session.name}</Link> 
                     {/* Email:
                     {session.email} | */}
+                    {admin()}
                     <Button className="logout-btn" variant="link" onClick={logout}> LOGOUT</Button>
         </div>
     );

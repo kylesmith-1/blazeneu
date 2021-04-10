@@ -68,6 +68,18 @@ function Company({ company, session }) {
         history.go(0);
     }
 
+    function admin_privs() {
+        if (session && (session.admin === true || session.admin === "true")) {
+            return (
+            <div>
+                <br></br>
+                {edit}
+                <br></br>
+                {deleteComp}
+            </div>);
+        }
+    }
+
     show = (
         <Button className="show-btn" variant="secondary" onClick={showCompany}> Show</Button>
     );
@@ -81,10 +93,11 @@ function Company({ company, session }) {
                 <br></br>
                 <div className="event-btn-container">
                     {show}
-                    <br></br>
+                    {admin_privs()}
+                    {/* <br></br>
                     {edit}
                     <br></br>
-                    {deleteComp}
+                    {deleteComp} */}
                 </div>
             </Card.Body>
         </Card>
