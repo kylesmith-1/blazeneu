@@ -155,6 +155,17 @@ function List({ companies, session }) {
             </div>
             <CompanyView session={session} />
             <CreateCompany session={session} />
+
+            <div className="splash">
+                <div className="text-content">
+                    <h2 className="splash-title">Disclaimer</h2>
+                    <p className="splash-text">The <span className="blaze">BLAZE</span> <span className="neu">NEU</span> team does not encourage or condone the use of recreational drugs, which may violate aspects of the Northeastern University Code of Student Conduct.<br/><br/>
+                    It is our belief that transpareny in employment screening is mutually beneficial for students and employers.<br/><br/>
+                    This website exists to improve that transparency.</p>
+                </div>
+            </div>
+
+
         </Container>
     );
 }
