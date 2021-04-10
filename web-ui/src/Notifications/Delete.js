@@ -41,7 +41,7 @@ function DeleteNotification({company, session}) {
 		<Row>
 			<Col>
 				<Form onSubmit={submit}>
-					<Button variant="success" type="submit">Stop notifications!</Button>
+					<Button variant="danger" type="submit">Stop notifications!</Button>
 				</Form>
 			</Col>
 		</Row>

@@ -71,7 +71,7 @@ function CreateEntry({company, session}) {
 		<Form.Group>
 			<Form.Label>What co-op cycle was this?</Form.Label>
 			<br/>
-			<label>
+			<Form.Label>
             <input
               type="radio"
               value="Spring"
@@ -79,8 +79,8 @@ function CreateEntry({company, session}) {
 			  onChange={updateCoopSeason}
             />
             Spring
-			</label>
-			<label>
+			</Form.Label>
+			<Form.Label>
             <input
               type="radio"
               value="Fall"
@@ -88,7 +88,7 @@ function CreateEntry({company, session}) {
 			  onChange={updateCoopSeason}
             />
 			Fall
-			</label>
+			</Form.Label>
 			<select class="form-control" id="exampleFormControlSelect1" onChange={updateCoopYear}>
 				<option>Select Year</option>
 				<option>2021</option>
@@ -175,7 +175,7 @@ function CreateEntry({company, session}) {
 						<Form.Label>Any additional notes on drug testing at this company?</Form.Label>
 						<Form.Control onChange={updateAdditionalNotes} value={entry.additional_notes || ""} />
 					</Form.Group>
-					<Button variant="success" type="submit">Post Entry</Button>
+					<Button variant="secondary" type="submit">Post Entry</Button>
 				</Form>
 			</Col>
 		</Row>

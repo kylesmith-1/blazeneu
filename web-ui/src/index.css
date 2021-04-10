@@ -36,9 +36,39 @@ a {
   margin-left: 75px;
 }
 
-/* .btn-primary {
+.btn-primary {
   background-color: #FD8369 !important;
-} */
+  border-color:  #FD8369 !important;
+}
+
+.btn-primary-outline {
+  background-color: #FFF !important;
+  border-color:  #FD8369 !important;
+  color: #FD8369 !important;
+  margin-top: 10px !important;
+}
+
+.btn-primary-outline:hover {
+  background-color: #FD8369 !important;
+  border-color:  #FD8369 !important;
+  color: white !important;
+  margin-top: 10px !important;
+}
+
+.btn-secondary {
+  background-color: #5878FF !important;
+  border-color:  #5878FF !important;
+ 
+}
+
+.btn-info {
+  background-color: #5878FF !important;
+  border-color:  #5878FF !important;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500 !important;
+  padding: 10px !important;
+  margin-top: 15px !important;
+}
 
 .btn-link:hover  {
   text-decoration: none !important;
@@ -55,15 +85,10 @@ a {
   padding: 20px;
 }
 
-.form-control {
-  margin-top: 10px;
-}
-
 .modal-btns {
   margin-top: 30px !important;
   margin-left: 250px !important;
 }
-
 
 
 body {
@@ -101,21 +126,17 @@ code {
   margin-left: 5px;
 }
 
-.btn-outline-primary {
-  margin-top: 10px;
-}
-
-.btn-outline-danger {
-  margin-right: 10px;
-}
 
 .btn-primary {
   margin-left: 5px;
 }
 
-.form-control {
-  /* margin-left: 5px;
-  margin-right: 10px; */
+label {
+  margin-left: 5px !important;
+}
+
+button, input {
+  margin-right: 5px !important;
 }
 
 .card {
@@ -124,10 +145,22 @@ code {
 
 h1 {
 text-align: center;
+margin-top: 50px !important;
 margin-bottom: 50px !important;
 }
 
+h2 {
+  margin-bottom: 25px !important;
+  margin-top: 25px !important;
+}
+
+h6 {
+  margin-bottom: 20px !important;
+}
+
+
 h4 {
+  margin-top: 50px !important;
   text-align: center;
   font-weight: 400 !important;
 }
@@ -137,12 +170,7 @@ h3 {
   color: red; 
 }
 
-.create-event {
-  display:flex;
-  justify-content: center;
-}
-
-.event-details {
+.company-details {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px;
@@ -150,6 +178,10 @@ h3 {
   border: 1px solid #C2C2C2;
   box-shadow:(0px 0px 4px rgba(0, 0, 0, 0.15));
   border-radius: 7px;
+}
+
+.company-info-wrapper {
+  margin-bottom: 15px;
 }
 
 .nav {
@@ -222,18 +254,15 @@ text-align: left;
 font-weight: 700;
 font-size: 48px;
 margin-bottom: 25px !important;
+line-height: 52px;
+letter-spacing: 2px;
+
 }
 
 .splash-text {
   margin-top: 0;
   font-size: 24px;
 }
-
-
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
 
 body {
     background-color: #E7E9F5;
@@ -247,12 +276,14 @@ body {
 }
 
 .form-control {
+  display: flex !important;
     border-radius: 7px !important;
     border: 1.5px solid #E3E6ED;
     letter-spacing: 1px !important;
-    margin-top: 0 !important;
     margin-bottom: 20px;
-    width: 50vw !important;
+    width: 25vw !important;
+    align-items: center;
+    margin-top: 10px !important;
 }
 
 input.form-control:focus {
@@ -262,9 +293,10 @@ input.form-control:focus {
     letter-spacing: 1px
 }
 
-.btn-primary {
-    background-color: #5878FF !important;
+.btn-dark {
+    background-color: #FD8369 !important;
     border-radius: 7px;
+    border-color: #FD8369 !important;
     height: calc(1.5em + 0.75rem + 2px);
     margin-left: 0 !important;
     border-top-right-radius: 10px !important;
@@ -272,11 +304,13 @@ input.form-control:focus {
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
     margin-left: -2em !important;
+    margin-top: 10px !important;
 }
 
-.btn-primary:focus {
-    box-shadow: none
+.btn-dark:focus {
+    box-shadow: none !important;
 }
+
 
 .flex-row {
     border: 1px solid #F2F2F4;
@@ -285,14 +319,84 @@ input.form-control:focus {
 }
 
 .flex-column p {
-    font-size: 14px
+    font-size: 14px;
 }
 
 span.mb-2 {
     font-size: 12px;
-    color: #8896BD
+    color: #8896BD;
 }
 
 h5 span {
     color: #869099
+}
+
+.justify-content-center {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.create-company {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.create-company-text {
+  font-weight: 500;
+  color: #898989 !important;
+  font-size: 16px;
+  margin-bottom: 5px !important;
+  margin-top: 15px !important;
+}
+
+.switch-button-text {
+  margin-top: 40px !important;
+  margin-bottom: 15px !important;
+}
+
+.search-bar {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.pac-target-input {
+  margin-top: 10px !important; 
+}
+
+p, .company-info {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+.booleanFalse {
+  color: green;
+}
+
+.booleanTrue {
+  color: red;
+
+}
+
+.edit-user {
+  margin-left: 15px;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.align-user-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.push-left {
+  margin-left: 20px;
+}
+
+.margin-bottom {
+  margin-bottom: 50px;
+}
+
+.black-txt {
+  color: black;
 }

@@ -56,6 +56,7 @@ function UsersNew() {
 			<Row>
 				<Col>
 					<h1>New User</h1>
+					<div class="container d-flex justify-content-center">
 					<Form onSubmit={submit}>
 						<Form.Group>
 							<Form.Label>Name</Form.Label>
@@ -89,6 +90,7 @@ function UsersNew() {
 							Save
 					</Button>
 					</Form>
+					</div>
 				</Col>
 			</Row>
 		</Container>

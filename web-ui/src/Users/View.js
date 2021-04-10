@@ -14,17 +14,15 @@ function SingleUser({session}) {
 				</Row>
 				<Row>
 					<Col>
-						<div className="event-details">
+						
 							<strong>Name:</strong> {session.name}
 							<br></br>
 							<strong>Email:</strong> {session.email}
-						</div>
+						
 					</Col>
 				</Row>
 				<Row>
-				<Button>
-						<Link to="/user/edit">Edit</Link>
-					</Button>
+						<Link className="edit-user" to="/user/edit">Edit User Information</Link>
 				</Row>
 			</Container>
 		);

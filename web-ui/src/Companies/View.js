@@ -26,7 +26,7 @@ function SingleCompany({ companies, session }) {
 	let editbtn = null;
 	let comments = null;
 	// if (company.user.id === session.user_id) {
-	editbtn = (<Button variant="success" onClick={editCompanyRoute}>Edit Company</Button>)
+	editbtn = (<Button variant="primary-outline" onClick={editCompanyRoute}>Edit Company</Button>)
 	//comments = (<CreateComment company_id={company.id}></CreateComment>)
 	// } 
 	// 	else {
@@ -46,13 +46,16 @@ function SingleCompany({ companies, session }) {
 			return (
 				<Row>
 					<Col>
-					<h3>Please register or login to create entries.</h3>
+						<h3>Please register or login to create entries and sign up for notifications.</h3>
 					</Col>
 				</Row>
 			);
 		}
 		else {
-			return (<EntryNew company={company} session={session}/>);
+			return (
+			<div><EntryNew company={company} session={session} />
+			<br></br>
+				<NotificationButton company={company} session={session} /> </div> );
 		}
 	}
 
@@ -61,13 +64,13 @@ function SingleCompany({ companies, session }) {
 			return (
 				<Row>
 					<Col>
-					<h3>Please register or login to sign up for notification.</h3>
+						<h3>Please register or login to sign up for notifications.</h3>
 					</Col>
 				</Row>
 			);
 		}
 		else {
-			return (<NotificationButton company={company} session={session}/>);
+			return (<NotificationButton company={company} session={session} />);
 		}
 	}
 
@@ -79,25 +82,29 @@ function SingleCompany({ companies, session }) {
 				<Col>
 					<h2>Drug Testing Information for <b>{company.name}</b></h2>
 				</Col>
-				<Col>
-					{editbtn}
-				</Col>
 			</Row>
 			<Row>
 				<Col>
-					<div className="event-details">
-						<em>Company Name:</em> {company.name}
-						<br></br>
-						<em>Company Location:</em> {company.location}
+					<div className="company-details">
+						<h6> <em>About this company: </em></h6>
+						<div className="company-info-wrapper">
+						<p className="company-info"><b>Company Name:</b> {company.name} </p>
+						<p className="company-info"><b>Company Location:</b> {company.location} </p>
+						</div>
+						<Row>
+							<Col>
+								{editbtn}
+							</Col>
+						</Row>
 					</div>
 				</Col>
 			</Row>
 			<br />
 			{loginNotice()}
-			<br />
-			{notify()}
+			{/* <br />
+			{notify()} */}
 			<ViewEntries company={company} session={session} />
-			
+
 			<SuccessGif company={company} />
 
 			{/* <ViewComments company={company} session={session} /> */}

@@ -36,15 +36,14 @@ function CompanyNew() {
 	}
 
 	function updateLocation() {
-
 		if (!(manual.manual)) {
 			let address = document.getElementById("jrj").value.toString();
 			console.log(address);
 			console.log(company);
-			
+
 			setCompany({
-			name: company.name,
-			location: address
+				name: company.name,
+				location: address
 			});
 			console.log(company);
 		}
@@ -59,16 +58,23 @@ function CompanyNew() {
 	function manualButton() {
 		if (manual.manual) {
 			return (
-				<Button onClick={() => updateManual()}>
-					Google Maps Location Entry
-				</Button>);
+				<div>
+					<p className="switch-button-text">Click here to find your company on the map!</p>
+					<Button onClick={() => updateManual()}>
+						Google Maps Location Entry
+				</Button>
+				</div>);
 		}
 		else {
 			return (
-				<Button
-					onClick={() => updateManual()}>
-					Manual Location Entry
-				</Button>);
+				<div>
+					<p className="switch-button-text">Can't find what you're looking for on the map? Click here to enter the address manually.</p>
+					<Button
+						onClick={() => updateManual()}>
+						Manual Location Entry
+				</Button>
+				</div>
+			);
 		}
 	}
 
@@ -85,9 +91,9 @@ function CompanyNew() {
 		}
 		else {
 			return (
-			<Form.Group>
-				<Home />
-			</Form.Group>);	
+				<Form.Group>
+					<Home />
+				</Form.Group>);
 		}
 	}
 
@@ -103,14 +109,15 @@ function CompanyNew() {
 							value={company.name || ""} />
 					</Form.Group>
 
-					{returnLocationEntry()}
-					<br />
-					<br />
 					{manualButton()}
 					<br />
 					<br />
+					{returnLocationEntry()}
 
-					<Button variant="success"
+					<br />
+					<br />
+
+					<Button variant="info"
 						onClick={updateLocation} type="submit">
 						Create
 					</Button>
