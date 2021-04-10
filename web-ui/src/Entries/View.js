@@ -53,7 +53,7 @@ return (
 	<Container className="company-details">
 		<Row>
 			<Col>
-				<h5> Entry {entry.id} </h5>
+				{/* <h5> Entry {entry.id} </h5> */}
 				{coop_cycle()}
 				{renderDrugTest()}
 				{renderContinuous()}
@@ -77,7 +77,7 @@ function ViewEntries({ company, session }) {
 			<Col>
 			<br>
 			</br>
-				<h2> List of Entries</h2>
+				<h2> User Entries</h2>
 				{entries}
 			</Col>
 		</Row>

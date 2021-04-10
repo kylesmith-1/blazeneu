@@ -30,8 +30,8 @@ use Mix.Config
 
 # Configure your database
 config :events_app, CompanyTest.Repo,
-username: "events_app",
-password: "xbk27rr0i",
+username: "blazeneu",
+password: "atlan99",
 database: "events_app_dev",
 hostname: "localhost",
   show_sensitive_data_on_connection_error: true,

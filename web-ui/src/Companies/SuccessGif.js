@@ -26,16 +26,31 @@ function display_gif({company}) {
             return (<img src={snoop} alt="" />);
         }
         else if (num === 1) {
-            return (<img src={ted} alt="" />);
+            return(
+                <figure>
+                    <img src={ted} alt="" />
+                    <figcaption>Copyright Universal Pictures.</figcaption>
+                </figure>
+            );
         }
         else if (num === 2) {
             return (<img src={elon} alt="" />);
         }
         else if (num === 3) {
-            return (<img src={that_70s} alt="" />);
+            return(
+                <figure>
+                    <img src={that_70s} alt="" />
+                    <figcaption>Copyright Carsey-Werner Television.</figcaption>
+                </figure>
+            );
         }
         else {
-            return(<img src={justin} alt="" />);
+            return(
+            <figure>
+                <img src={justin} alt="" />
+                <figcaption>Copyright Sony Pictues Enterntainment.</figcaption>
+            </figure>
+            );
         }
 
     }
@@ -44,7 +59,7 @@ function display_gif({company}) {
         return (
             <Row>
                 <Col>
-                <h6>Woohoo! This company has been reported to not drug test!</h6>
+                <h6>Woohoo! This company has been reported in <b>100%</b> of entries to <b>not drug test!</b></h6>
                 {select_random_gif()}
                 </Col>
             </Row>
