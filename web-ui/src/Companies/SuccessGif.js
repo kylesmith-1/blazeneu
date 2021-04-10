@@ -1,5 +1,6 @@
 import { Row, Col, Button, Container } from 'react-bootstrap';
 import snoop from './Gifs/snoop_dogg.gif';
+import snoop_shorter from './Gifs/snoop_shorter.gif';
 import justin from './Gifs/justin_timberlake.gif';
 import ted from './Gifs/ted.gif';
 import elon from './Gifs/elon.gif';
@@ -21,9 +22,9 @@ function display_gif({company}) {
     }
 
     function select_random_gif() {
-        let num = genRandomNumber(0, 5);
+        let num = genRandomNumber(0, 4);
         if (num === 0) {
-            return (<img src={snoop} alt="" />);
+            return (<img src={snoop_shorter} alt="" />);
         }
         else if (num === 1) {
             return(
@@ -35,14 +36,6 @@ function display_gif({company}) {
         }
         else if (num === 2) {
             return (<img src={elon} alt="" />);
-        }
-        else if (num === 3) {
-            return(
-                <figure>
-                    <img src={that_70s} alt="" />
-                    <figcaption>Copyright Carsey-Werner Television.</figcaption>
-                </figure>
-            );
         }
         else {
             return(
