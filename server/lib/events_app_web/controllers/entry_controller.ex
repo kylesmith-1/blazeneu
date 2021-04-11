@@ -14,9 +14,9 @@ defmodule CompanyTestWeb.EntryController do
   end
 
   def create(conn, %{"entry" => entry_params}) do
-    # Logger.debug "Hello this is the create: #{inspect(entry_params)}"
-    # Logger.debug "Now this is the id #{inspect(entry_params["company_id"])}"
-    Notifications.send_emails(entry_params["company_id"])
+    Logger.debug "Hello this is the create: #{inspect(entry_params)}"
+    Logger.debug "Now this is the id #{inspect(entry_params["company_id"])}"
+    # Notifications.send_emails(entry_params["company_id"])
 
     with {:ok, %Entry{} = entry} <- Entries.create_entry(entry_params) do
       conn
