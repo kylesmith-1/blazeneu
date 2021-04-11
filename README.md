@@ -14,3 +14,6 @@ Know what to expect, before you get to the interview.
 ## Disclaimer:
 
 The BLAZE NEU team does not encourage or condone the use of recreational drugs, which may violate aspects of the Northeastern University Code of Student Conduct. It is our belief that transpareny in employment screening is mutually beneficial for students and employers. This website exists to improve that transparency.
+
+## Note
+- a gifs directory has been removed from the master branch to meet the size requirements for submitting for CS 4550
