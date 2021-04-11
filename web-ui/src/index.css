@@ -204,14 +204,14 @@ h3 {
 }
 
 .log-in {
-  margin-left: 700px;
+  margin-left: 300px;
   display: flex;
   align-self: center;
 }
 
 .sign-up {
   display: flex;
-  margin-right: 150px;
+  margin-right: 250px;
   align-self: center;
 
 }
@@ -242,7 +242,7 @@ p, .welcome-txt {
 
 .splash {
   display:flex;
- justify-content: space-evenly;
+  justify-content: space-evenly;
   width: 100vw;
   position: relative;
   left: 50%;
@@ -274,6 +274,14 @@ letter-spacing: 2px;
 .splash-text {
   margin-top: 0;
   font-size: 24px;
+}
+
+.svg-edit {
+margin-top: 100px;
+}
+
+.footer-content {
+margin: 50px;
 }
 
 body {

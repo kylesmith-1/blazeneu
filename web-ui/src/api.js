@@ -1,7 +1,7 @@
 import store from './store';
 
 export async function api_get(path) {
-	let text = await fetch("http://localhost:4000/api/v1" + path, {});
+	let text = await fetch("http://serverbackend.blazeneu.com/api/v1" + path, {});
 	let resp = await text.json();
 	return resp.data;
 }
@@ -11,12 +11,12 @@ async function api_post(path, data) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'Origin': 'http://localhost:4000'
+			'Origin': 'http://serverbackend.blazeneu.com'
 		},
 		body: JSON.stringify(data),
 	};
 	let text = await fetch(
-		"http://localhost:4000/api/v1" + path, opts);
+		"http://serverbackend.blazeneu.com/api/v1" + path, opts);
 	return await text.json();
 }
 
@@ -61,7 +61,7 @@ export function api_login(email, password) {
 
 async function abstract_opts(path, opts) {
 	let text = await fetch(
-		"http://localhost:4000/api/v1" + path, opts);
+		"http://serverbackend.blazeneu.com/api/v1" + path, opts);
 	return await text.json();
 }
 
@@ -89,7 +89,7 @@ export async function create_company(company) {
 	};
 
 	let text = await fetch(
-		"http://localhost:4000/api/v1/companies", opts);
+		"http://serverbackend.blazeneu.com/api/v1/companies", opts);
 	return await text.json();
 }
 
@@ -118,7 +118,7 @@ export async function delete_company(company) {
 	};
 
 	await fetch(
-		"http://localhost:4000/api/v1" + "/companies/" + company.id, opts);
+		"http://serverbackend.blazeneu.com/api/v1" + "/companies/" + company.id, opts);
 	fetch_companies();
 }
 
@@ -136,9 +136,25 @@ export async function create_comment(comment) {
 	return abstract_opts("/comments", opts);
 }
 
+// export async function create_entry(entry) {
+// 	let state = store.getState();
+// 	let token = state?.session?.token;
+// 	let opts = {
+// 		method: 'POST',
+// 		headers: {
+// 			'Content-Type': 'application/json',
+// 			'x-auth': token
+// 		},
+// 		body: JSON.stringify({ "entry": entry })
+// 	};
+// 	return abstract_opts("/entries", opts);
+// }
+
 export async function create_entry(entry) {
 	let state = store.getState();
 	let token = state?.session?.token;
+	console.log(entry)
+
 	let opts = {
 		method: 'POST',
 		headers: {
@@ -147,7 +163,10 @@ export async function create_entry(entry) {
 		},
 		body: JSON.stringify({ "entry": entry })
 	};
-	return abstract_opts("/entries", opts);
+
+	let text = await fetch(
+		"http://serverbackend.blazeneu.com/api/v1/entries", opts);
+	return await text.json();
 }
 
 export async function delete_entry(id) {
@@ -160,7 +179,7 @@ export async function delete_entry(id) {
 	};
 
 	await fetch(
-		"http://localhost:4000/api/v1" + "/entries/" + id, opts);
+		"http://serverbackend.blazeneu.com/api/v1" + "/entries/" + id, opts);
 	fetch_companies();
 }
 
@@ -188,7 +207,7 @@ export async function delete_notification(id) {
 	};
 
 	await fetch(
-		"http://localhost:4000/api/v1" + "/notifications/" + id, opts);
+		"http://serverbackend.blazeneu.com/api/v1" + "/notifications/" + id, opts);
 	fetch_companies();
 }
 
@@ -202,7 +221,7 @@ export async function delete_comment(id) {
 	};
 
 	await fetch(
-		"http://localhost:4000/api/v1" + "/comments/" + id, opts);
+		"http://serverbackend.blazeneu.com/api/v1" + "/comments/" + id, opts);
 	fetch_companies();
 }
 
