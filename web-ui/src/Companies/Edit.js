@@ -8,7 +8,8 @@ import { edit_company, fetch_companies, get_company } from '../api';
 function EditCompany({companies, session }) {
 	const location = useLocation();
 	let history = useHistory();
-	let id = parseInt(location.pathname.slice(-1));
+	let terms = location.pathname.split("/");
+	let id = parseInt(terms[terms.length - 1]);
 	let prevCompany = get_company(companies, id);
 
 	const [company, setCompany] = useState(prevCompany);

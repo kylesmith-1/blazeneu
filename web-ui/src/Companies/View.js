@@ -16,7 +16,8 @@ function SingleCompany({ companies, session }) {
 
 	const location = useLocation();
 	let history = useHistory();
-	let id = parseInt(location.pathname.slice(-1));
+	let terms = location.pathname.split("/");
+	let id = parseInt(terms[terms.length - 1]);
 	let company = get_company(companies, id);
 	// alert(company.entries);
 

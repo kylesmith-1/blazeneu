@@ -16,8 +16,7 @@ function CreateEntry({company, session}) {
         additional_notes: "",
         company_id: company.id, 
         user_id: session.user_id
-        //need more here
-		//company_id: location.pathname.slice(-1)
+
 	});
 
 	function submit(ev) {
