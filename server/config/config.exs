@@ -20,6 +20,7 @@ config :events_app,
 # Configures the endpoint
 config :events_app, CompanyTestWeb.Endpoint,
   url: [host: "localhost"],
+  check_origin: ["http://blazeneu.com"],
   secret_key_base: secret_key_base,
   render_errors: [view: CompanyTestWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: CompanyTest.PubSub,

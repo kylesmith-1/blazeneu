@@ -110,14 +110,13 @@ defmodule CompanyTest.Notifications do
 
   def send_emails(comp_id) do
     allNotifs = list_notifications()
-    oneNotif = get_notification!(1).user_id
     for notif <- allNotifs do
       usr = Users.get_user!(notif.user_id)
       cmpny = Companies.get_company!(notif.company_id)
       if (cmpny.id == comp_id) do
         email = usr.email
         company_name = cmpny.name
-        str_message = "Hello! There is new drug test data posted for " <> company_name <> ". Check it out over at http://blazeneu.com/company/view/" <> to_string(cmpny.id)
+        str_message = "Hello! There is new drug test data posted for " <> company_name <> ". Check it out over at http://blazeneu.com/"
         SendEmail.send("blazeneu@gmail.com", email, "Updates on BlazeNEU!", str_message)
       end
     end
